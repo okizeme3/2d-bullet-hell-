@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc4318a43q8i2"]
+
+[ext_resource type="Script" path="res://scripts/robot_enemy.gd" id="1_l6b6o"]
+[ext_resource type="Texture2D" uid="uid://bltv1rubna3be" path="res://assets/art/IMG_0392.PNG" id="2_lfprf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_a4u3f"]
+radius = 6.0
+
+[node name="robot enemy" type="Area2D"]
+collision_mask = 3
+script = ExtResource("1_l6b6o")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_lfprf")
+region_enabled = true
+region_rect = Rect2(32, 0, 16, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_a4u3f")
+
+[node name="direction change" type="Timer" parent="."]
+autostart = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="timeout" from="direction change" to="." method="_on_direction_change_timeout"]

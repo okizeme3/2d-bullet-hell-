@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://8l88dd81xy2a"]
+
+[ext_resource type="Texture2D" uid="uid://bty4myb2ijt60" path="res://icon.svg" id="1_ahoyy"]
+[ext_resource type="Script" path="res://scripts/double_lazer.gd" id="1_efjyo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjawg"]
+size = Vector2(1, 6)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d6qw2"]
+size = Vector2(1, 6)
+
+[node name="double lazer" type="CharacterBody2D" groups=["lazer"]]
+rotation = 1.5708
+collision_layer = 2
+script = ExtResource("1_efjyo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5.495, 0)
+rotation = -1.5708
+scale = Vector2(0.046875, 0.0233594)
+texture = ExtResource("1_ahoyy")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(5.495, 0)
+rotation = -1.5708
+scale = Vector2(0.046875, 0.0233594)
+texture = ExtResource("1_ahoyy")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5.5, 0)
+shape = SubResource("RectangleShape2D_mjawg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(5.5, 0)
+shape = SubResource("RectangleShape2D_d6qw2")
+
+[node name="expire" type="Timer" parent="."]

@@ -1,0 +1,123 @@
+[gd_scene load_steps=14 format=3 uid="uid://dev141ytg4iyn"]
+
+[ext_resource type="PackedScene" uid="uid://ca65thmub5xao" path="res://scences/player_ship.tscn" id="1_5mmqh"]
+[ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_do3vv"]
+[ext_resource type="PackedScene" uid="uid://4tdwvcwep81b" path="res://scences/green_enemy.tscn" id="3_5px7y"]
+[ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="4_88p00"]
+[ext_resource type="Script" path="res://scripts/bullet_killzone.gd" id="4_eue21"]
+[ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="4_uum2l"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="8_2m8gu"]
+[ext_resource type="PackedScene" uid="uid://bfarc6gwj0tq0" path="res://scences/bullet_killzone.tscn" id="8_gfq3v"]
+[ext_resource type="Texture2D" uid="uid://n55maexicgap" path="res://assets/art/IMG_0417.PNG" id="8_n1udv"]
+[ext_resource type="Texture2D" uid="uid://bprwwram5cbst" path="res://assets/art/IMG_0418.PNG" id="9_0k55y"]
+[ext_resource type="PackedScene" uid="uid://bc4318a43q8i2" path="res://scences/robot_enemy.tscn" id="11_0muqq"]
+[ext_resource type="PackedScene" uid="uid://bcmb2k0ja51io" path="res://scences/yellow_enemy.tscn" id="12_p1ujp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dtmo2"]
+size = Vector2(162, 4)
+
+[node name="game" type="Node2D"]
+script = ExtResource("1_do3vv")
+
+[node name="player ship" parent="." instance=ExtResource("1_5mmqh")]
+z_index = 5
+position = Vector2(0, 93)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+z_index = 1
+zoom = Vector2(4, 4)
+
+[node name="Marker2D" type="Marker2D" parent="Camera2D" groups=["camera"]]
+position = Vector2(0, 93)
+
+[node name="bullet killzone" parent="Camera2D" instance=ExtResource("8_gfq3v")]
+position = Vector2(0, -125.67)
+script = ExtResource("4_eue21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/bullet killzone"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_dtmo2")
+
+[node name="bullet killzone2" parent="Camera2D" instance=ExtResource("8_gfq3v")]
+position = Vector2(0, 116)
+script = ExtResource("4_eue21")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/bullet killzone2"]
+position = Vector2(0, 5)
+shape = SubResource("RectangleShape2D_dtmo2")
+
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+z_index = -1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -81.0
+offset_top = -119.0
+offset_right = 81.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="enimies and spawns" type="Node" parent="."]
+
+[node name="green enemy" parent="enimies and spawns" instance=ExtResource("3_5px7y")]
+position = Vector2(0, -136)
+
+[node name="yellow_enemy" parent="enimies and spawns" instance=ExtResource("12_p1ujp")]
+position = Vector2(60, -76)
+
+[node name="robot enemy" parent="enimies and spawns" instance=ExtResource("11_0muqq")]
+position = Vector2(-37, -18)
+
+[node name="robot enemy2" parent="enimies and spawns" instance=ExtResource("11_0muqq")]
+position = Vector2(37, -35)
+
+[node name="yellow_enemy2" parent="enimies and spawns" instance=ExtResource("12_p1ujp")]
+position = Vector2(-60, -76)
+
+[node name="labels and textures" type="Node" parent="."]
+
+[node name="lives label" type="Label" parent="labels and textures" groups=["lives label"]]
+offset_left = 69.0
+offset_top = -119.0
+offset_right = 80.0
+offset_bottom = -105.0
+theme_override_fonts/font = ExtResource("4_uum2l")
+theme_override_font_sizes/font_size = 5
+text = "X3"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sprite2D" type="Sprite2D" parent="labels and textures/lives label"]
+texture_filter = 1
+position = Vector2(-5, 8)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("4_88p00")
+
+[node name="score" type="Label" parent="labels and textures" groups=["lives label"]]
+offset_left = -79.0
+offset_top = -119.0
+offset_right = -74.0
+offset_bottom = -105.0
+theme_override_fonts/font = ExtResource("4_uum2l")
+theme_override_font_sizes/font_size = 5
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("8_2m8gu")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="labels and textures"]
+offset_left = -79.0
+offset_top = 20.0
+offset_right = -31.0
+offset_bottom = 36.0
+rotation = -1.57079
+texture_under = ExtResource("8_n1udv")
+texture_over = ExtResource("9_0k55y")
+texture_progress = ExtResource("9_0k55y")
+
+[connection signal="body_entered" from="Camera2D/bullet killzone" to="." method="_on_bullet_killzone_body_entered"]
+[connection signal="body_entered" from="Camera2D/bullet killzone2" to="." method="_on_bullet_killzone_body_entered"]

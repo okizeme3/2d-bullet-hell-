@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://bfarc6gwj0tq0"]
+
+[node name="bullet killzone" type="Area2D"]
+collision_mask = 3

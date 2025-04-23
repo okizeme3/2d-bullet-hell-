@@ -1,0 +1,154 @@
+[gd_scene load_steps=19 format=3 uid="uid://ca65thmub5xao"]
+
+[ext_resource type="Script" path="res://scripts/player_ship.gd" id="1_ynhdv"]
+[ext_resource type="Texture2D" uid="uid://cxxuvdjgck5rw" path="res://assets/art/explosion/IMG_0409.PNG" id="2_t0x58"]
+[ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="2_tfkbm"]
+[ext_resource type="Texture2D" uid="uid://dsmy426fgw4mo" path="res://assets/art/explosion/IMG_0404.PNG" id="3_h1pjn"]
+[ext_resource type="Texture2D" uid="uid://cakty4w68rcpw" path="res://assets/art/explosion/IMG_0407.PNG" id="4_qd15n"]
+[ext_resource type="Texture2D" uid="uid://dv8p620uuccd2" path="res://assets/art/explosion/IMG_0411.PNG" id="5_btmy1"]
+[ext_resource type="Texture2D" uid="uid://b22sbogqew8mb" path="res://assets/art/explosion/IMG_0405.PNG" id="6_l7vfq"]
+[ext_resource type="Texture2D" uid="uid://cyfspn4h2a26d" path="res://assets/art/explosion/IMG_0408.PNG" id="7_uda2g"]
+[ext_resource type="Texture2D" uid="uid://cmhajdbnvg7ue" path="res://assets/art/explosion/IMG_0403.PNG" id="8_0mnfq"]
+[ext_resource type="Texture2D" uid="uid://db36gs85ngkit" path="res://assets/art/explosion/IMG_0406.PNG" id="9_gak0x"]
+[ext_resource type="Texture2D" uid="uid://c5tqxnwae81j5" path="res://assets/art/explosion/IMG_0410.PNG" id="10_4gf1q"]
+[ext_resource type="Texture2D" uid="uid://dtdfyisaqy23h" path="res://assets/art/fire pt 2.PNG" id="12_ypf1j"]
+[ext_resource type="Texture2D" uid="uid://8hn3qqe8ubq6" path="res://assets/art/fire.PNG" id="13_wqsls"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sdb3y"]
+atlas = ExtResource("2_tfkbm")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7ai6g"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_t0x58")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h1pjn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_qd15n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_btmy1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_l7vfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_uda2g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0mnfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_gak0x")
+}, {
+"duration": 5.0,
+"texture": ExtResource("10_4gf1q")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sdb3y")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"turn left",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"turn right",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0v6xp"]
+radius = 5.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1ycyr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_4gf1q")
+}],
+"loop": true,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_ypf1j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_wqsls")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cen2y"]
+radius = 7.0
+
+[node name="player ship" type="CharacterBody2D" groups=["player"]]
+motion_mode = 1
+script = ExtResource("1_ynhdv")
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7ai6g")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_0v6xp")
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(0, -8)
+
+[node name="shoot intervel" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="fire left" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(-1.715, 10)
+scale = Vector2(0.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_1ycyr")
+animation = &"fire"
+autoplay = "fire"
+
+[node name="fire right" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1.79, 10)
+scale = Vector2(0.375, 0.375)
+sprite_frames = SubResource("SpriteFrames_1ycyr")
+animation = &"fire"
+autoplay = "fire"
+flip_h = true
+
+[node name="invul timer" type="Timer" parent="."]
+
+[node name="bullet hit box" type="Area2D" parent="."]
+position = Vector2(0, 1)
+collision_mask = 2
+
+[node name="bhb" type="CollisionShape2D" parent="bullet hit box"]
+shape = SubResource("CircleShape2D_cen2y")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="shoot intervel" to="." method="_on_shoot_intervel_timeout"]
+[connection signal="timeout" from="invul timer" to="." method="_on_invul_timer_timeout"]
+[connection signal="body_entered" from="bullet hit box" to="." method="_on_bullet_hit_box_body_entered"]
