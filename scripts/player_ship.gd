@@ -14,6 +14,7 @@ extends CharacterBody2D
 @onready var hitbox: CollisionShape2D = $CollisionShape2D
 @onready var invul_timer: Timer = $"invul timer"
 @onready var bhb: CollisionShape2D = $"bullet hit box/bhb"
+@onready var respawn_flash: AnimationPlayer = $"Sprite2D/respawn flash"
 
 @export var speed = 150
 var alive = true
@@ -61,6 +62,8 @@ func respawn():
 	fire_left.play("fire")
 	fire_right.play("fire")
 	position = marker.global_position
+	respawn_flash.play("resawn_flash")
+
 func gameover():
 	pass
 

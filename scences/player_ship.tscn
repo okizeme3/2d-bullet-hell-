@@ -1,6 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://ca65thmub5xao"]
+[gd_scene load_steps=24 format=3 uid="uid://ca65thmub5xao"]
 
 [ext_resource type="Script" path="res://scripts/player_ship.gd" id="1_ynhdv"]
+[ext_resource type="Shader" uid="uid://c5n6equdr30ja" path="res://shader/respawn_flash.tres" id="2_adrxq"]
 [ext_resource type="Texture2D" uid="uid://cxxuvdjgck5rw" path="res://assets/art/explosion/IMG_0409.PNG" id="2_t0x58"]
 [ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="2_tfkbm"]
 [ext_resource type="Texture2D" uid="uid://dsmy426fgw4mo" path="res://assets/art/explosion/IMG_0404.PNG" id="3_h1pjn"]
@@ -13,6 +14,11 @@
 [ext_resource type="Texture2D" uid="uid://c5tqxnwae81j5" path="res://assets/art/explosion/IMG_0410.PNG" id="10_4gf1q"]
 [ext_resource type="Texture2D" uid="uid://dtdfyisaqy23h" path="res://assets/art/fire pt 2.PNG" id="12_ypf1j"]
 [ext_resource type="Texture2D" uid="uid://8hn3qqe8ubq6" path="res://assets/art/fire.PNG" id="13_wqsls"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mr7o4"]
+shader = ExtResource("2_adrxq")
+shader_parameter/enabled = false
+shader_parameter/tint = Color(1, 1, 1, 1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdb3y"]
 atlas = ExtResource("2_tfkbm")
@@ -71,6 +77,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="Animation" id="Animation_61n5v"]
+resource_name = "resawn_flash"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [true, false, true, false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_pwhyd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:material:shader_parameter/enabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_87lur"]
+_data = {
+"RESET": SubResource("Animation_pwhyd"),
+"resawn_flash": SubResource("Animation_61n5v")
+}
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_0v6xp"]
 radius = 5.0
 
@@ -104,11 +146,18 @@ motion_mode = 1
 script = ExtResource("1_ynhdv")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+material = SubResource("ShaderMaterial_mr7o4")
 sprite_frames = SubResource("SpriteFrames_7ai6g")
 animation = &"idle"
 autoplay = "idle"
 
+[node name="respawn flash" type="AnimationPlayer" parent="Sprite2D"]
+libraries = {
+"": SubResource("AnimationLibrary_87lur")
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, 1)
 shape = SubResource("CircleShape2D_0v6xp")
 
@@ -146,6 +195,7 @@ position = Vector2(0, 1)
 collision_mask = 2
 
 [node name="bhb" type="CollisionShape2D" parent="bullet hit box"]
+visible = false
 shape = SubResource("CircleShape2D_cen2y")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
