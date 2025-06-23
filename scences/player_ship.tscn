@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://ca65thmub5xao"]
+[gd_scene load_steps=25 format=3 uid="uid://ca65thmub5xao"]
 
 [ext_resource type="Script" path="res://scripts/player_ship.gd" id="1_ynhdv"]
 [ext_resource type="Shader" uid="uid://c5n6equdr30ja" path="res://shader/respawn_flash.tres" id="2_adrxq"]
+[ext_resource type="PackedScene" uid="uid://cmsue5nq3i31i" path="res://scences/ghost.tscn" id="2_iy4ts"]
 [ext_resource type="Texture2D" uid="uid://cxxuvdjgck5rw" path="res://assets/art/explosion/IMG_0409.PNG" id="2_t0x58"]
 [ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="2_tfkbm"]
 [ext_resource type="Texture2D" uid="uid://dsmy426fgw4mo" path="res://assets/art/explosion/IMG_0404.PNG" id="3_h1pjn"]
@@ -144,6 +145,7 @@ radius = 7.0
 [node name="player ship" type="CharacterBody2D" groups=["player"]]
 motion_mode = 1
 script = ExtResource("1_ynhdv")
+ghost_node = ExtResource("2_iy4ts")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_mr7o4")
@@ -198,7 +200,19 @@ collision_mask = 2
 visible = false
 shape = SubResource("CircleShape2D_cen2y")
 
+[node name="dash cooldown" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="dash invi" type="Timer" parent="."]
+wait_time = 0.2
+
+[node name="ghost timer" type="Timer" parent="."]
+wait_time = 0.15
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="shoot intervel" to="." method="_on_shoot_intervel_timeout"]
 [connection signal="timeout" from="invul timer" to="." method="_on_invul_timer_timeout"]
 [connection signal="body_entered" from="bullet hit box" to="." method="_on_bullet_hit_box_body_entered"]
+[connection signal="timeout" from="dash cooldown" to="." method="_on_dash_cooldown_timeout"]
+[connection signal="timeout" from="dash invi" to="." method="_on_dash_invi_timeout"]
+[connection signal="timeout" from="ghost timer" to="." method="_on_ghost_timer_timeout"]

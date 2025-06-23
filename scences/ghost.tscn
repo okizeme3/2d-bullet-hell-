@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmsue5nq3i31i"]
+
+[ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="1_cl7gy"]
+[ext_resource type="Script" path="res://scripts/ghost.gd" id="2_it6f2"]
+
+[node name="ghost" type="Sprite2D"]
+show_behind_parent = true
+texture = ExtResource("1_cl7gy")
+script = ExtResource("2_it6f2")

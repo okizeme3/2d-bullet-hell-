@@ -16,7 +16,8 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("die"):
-		body.die()
+		if body.alive:
+			body.die()
 	if body.is_in_group("lazer"): 
 		death()
 		Gamemanager.score += 20
