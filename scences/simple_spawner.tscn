@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd0c5qvfnmyfj"]
+
+[ext_resource type="Script" path="res://scripts/simple_spawner.gd" id="1_30y6r"]
+
+[node name="simple spawner" type="Node2D"]
+script = ExtResource("1_30y6r")
+
+[node name="Green spawn interval" type="Timer" parent="."]
+autostart = true
+
+[node name="robot spawn Interval" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="Green spawn interval" to="." method="_on_green_spawn_interval_timeout"]
+[connection signal="timeout" from="robot spawn Interval" to="." method="_on_robot_spawn_interval_timeout"]

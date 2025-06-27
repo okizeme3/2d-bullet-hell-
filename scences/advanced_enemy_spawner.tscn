@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbwy5iblamyar"]
+
+[ext_resource type="Script" path="res://scripts/advanced_enemy_spawner.gd" id="1_hnka4"]
+
+[node name="advanced enemy spawner" type="Node2D"]
+script = ExtResource("1_hnka4")
+
+[node name="yellow Spawn Interval" type="Timer" parent="."]
+
+[connection signal="timeout" from="yellow Spawn Interval" to="." method="_on_yellow_spawn_interval_timeout"]

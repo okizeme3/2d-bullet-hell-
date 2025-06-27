@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dev141ytg4iyn"]
+[gd_scene load_steps=15 format=3 uid="uid://dev141ytg4iyn"]
 
 [ext_resource type="PackedScene" uid="uid://ca65thmub5xao" path="res://scences/player_ship.tscn" id="1_5mmqh"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_do3vv"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scripts/bullet_killzone.gd" id="4_eue21"]
 [ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="4_uum2l"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="8_2m8gu"]
+[ext_resource type="PackedScene" uid="uid://bd0c5qvfnmyfj" path="res://scences/simple_spawner.tscn" id="8_bbmyy"]
 [ext_resource type="PackedScene" uid="uid://bfarc6gwj0tq0" path="res://scences/bullet_killzone.tscn" id="8_gfq3v"]
 [ext_resource type="Texture2D" uid="uid://n55maexicgap" path="res://assets/art/IMG_0417.PNG" id="8_n1udv"]
 [ext_resource type="Texture2D" uid="uid://bprwwram5cbst" path="res://assets/art/IMG_0418.PNG" id="9_0k55y"]
@@ -61,22 +62,25 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="enimies and spawns" type="Node" parent="."]
+[node name="enemy_spawners" type="Node" parent="."]
 
-[node name="green enemy" parent="enimies and spawns" instance=ExtResource("3_5px7y")]
+[node name="green enemy" parent="enemy_spawners" instance=ExtResource("3_5px7y")]
 position = Vector2(19, -105)
 
-[node name="yellow_enemy" parent="enimies and spawns" instance=ExtResource("12_p1ujp")]
+[node name="yellow_enemy" parent="enemy_spawners" instance=ExtResource("12_p1ujp")]
 position = Vector2(60, -76)
 
-[node name="robot enemy" parent="enimies and spawns" instance=ExtResource("11_0muqq")]
+[node name="robot enemy" parent="enemy_spawners" instance=ExtResource("11_0muqq")]
 position = Vector2(-37, -18)
 
-[node name="robot enemy2" parent="enimies and spawns" instance=ExtResource("11_0muqq")]
+[node name="robot enemy2" parent="enemy_spawners" instance=ExtResource("11_0muqq")]
 position = Vector2(37, -35)
 
-[node name="yellow_enemy2" parent="enimies and spawns" instance=ExtResource("12_p1ujp")]
+[node name="yellow_enemy2" parent="enemy_spawners" instance=ExtResource("12_p1ujp")]
 position = Vector2(-60, -76)
+
+[node name="simple spawner" parent="enemy_spawners" instance=ExtResource("8_bbmyy")]
+position = Vector2(-29, -153)
 
 [node name="labels and textures" type="Node" parent="."]
 

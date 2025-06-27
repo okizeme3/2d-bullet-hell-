@@ -38,6 +38,10 @@ func get_input():
 			shoot()
 			can_shoot= false
 			shoot_col.start()
+		#handles input and velocity
+		if Input.is_action_pressed("finner control"):
+			speed = 75
+		else: speed = 150
 		var input_direction = Input.get_vector("left", "right", "up", "down")
 		velocity = input_direction * (speed+ dash_velocity)
 		#handles dashing 
