@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bcmb2k0ja51io"]
+[gd_scene load_steps=5 format=3 uid="uid://bcmb2k0ja51io"]
 
 [ext_resource type="Script" path="res://scripts/yellow_enemy.gd" id="1_2hjp6"]
+[ext_resource type="PackedScene" uid="uid://cjopfnttow6bg" path="res://scences/explosion_particles.tscn" id="2_17kwb"]
 [ext_resource type="Texture2D" uid="uid://bltv1rubna3be" path="res://assets/art/IMG_0392.PNG" id="2_pjh3c"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4u3f"]
@@ -9,6 +10,7 @@ radius = 6.0
 [node name="yellow_enemy" type="Area2D"]
 collision_mask = 3
 script = ExtResource("1_2hjp6")
+Explosion = ExtResource("2_17kwb")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_pjh3c")

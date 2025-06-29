@@ -4,7 +4,9 @@ extends Area2D
 @onready var marker_2d: Marker2D = $Marker2D
 @onready var game = get_tree().get_root().get_node("game")
 @onready var shoot_interval: Timer = $"shoot interval"
+@export var Explosion : PackedScene
 
+var intro = true
 var direction = 1
 var i = 0
 var can_shoot = true
@@ -13,11 +15,10 @@ var attacking = false
 func _ready() -> void:
 	set_direction()
 func  _process(delta: float) -> void:
-	if can_shoot and attacking == false:
+	if can_shoot and !attacking:
 		shoot()
 		can_shoot = false
 		shoot_interval.start()
-	#make sure enemy cant leave the screen
 	position = position.clamp(Vector2(-81,-119),Vector2(81,119))
 	if attacking == false:
 		if direction == -1:
@@ -31,7 +32,12 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("die"):
 		if body.alive:
 			body.die()
-	if body.is_in_group("lazer"): 
+	if body.is_in_group("lazer"):
+		var explosion_instance = Explosion.instantiate()
+		explosion_instance.position = position
+		get_parent().add_child(explosion_instance)
+		explosion_instance.modulate = Color8(249,255 ,12)
+		explosion_instance.emitting = true
 		death()
 		Gamemanager.score += 30
 		body.expire()

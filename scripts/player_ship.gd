@@ -91,7 +91,8 @@ func respawn():
 	respawn_flash.play("resawn_flash")
 
 func gameover():
-	pass
+	Gamemanager.gameOver = true
+	print(Gamemanager.gameOver)
 
 func _on_timer_timeout() -> void:
 	respawn()

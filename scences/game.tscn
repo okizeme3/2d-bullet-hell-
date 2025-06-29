@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dev141ytg4iyn"]
+[gd_scene load_steps=16 format=3 uid="uid://dev141ytg4iyn"]
 
 [ext_resource type="PackedScene" uid="uid://ca65thmub5xao" path="res://scences/player_ship.tscn" id="1_5mmqh"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_do3vv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bfarc6gwj0tq0" path="res://scences/bullet_killzone.tscn" id="8_gfq3v"]
 [ext_resource type="Texture2D" uid="uid://n55maexicgap" path="res://assets/art/IMG_0417.PNG" id="8_n1udv"]
 [ext_resource type="Texture2D" uid="uid://bprwwram5cbst" path="res://assets/art/IMG_0418.PNG" id="9_0k55y"]
+[ext_resource type="PackedScene" uid="uid://dbwy5iblamyar" path="res://scences/advanced_enemy_spawner.tscn" id="9_n4mol"]
 [ext_resource type="PackedScene" uid="uid://bc4318a43q8i2" path="res://scences/robot_enemy.tscn" id="11_0muqq"]
 [ext_resource type="PackedScene" uid="uid://bcmb2k0ja51io" path="res://scences/yellow_enemy.tscn" id="12_p1ujp"]
 
@@ -81,6 +82,9 @@ position = Vector2(-60, -76)
 
 [node name="simple spawner" parent="enemy_spawners" instance=ExtResource("8_bbmyy")]
 position = Vector2(-29, -153)
+
+[node name="advanced enemy spawner" parent="enemy_spawners" instance=ExtResource("9_n4mol")]
+position = Vector2(106, -97)
 
 [node name="labels and textures" type="Node" parent="."]
 
