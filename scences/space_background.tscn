@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://c4w2mhtvquqng"]
+
+[ext_resource type="Script" path="res://scripts/space_background.gd" id="1_d0a4c"]
+[ext_resource type="Texture2D" uid="uid://cv5nb1oncphsc" path="res://assets/art/bacground attempt 2/IMG_0480.PNG" id="2_713i1"]
+[ext_resource type="Texture2D" uid="uid://tk3goyqdpqjp" path="res://assets/art/bacground attempt 2/IMG_0481.PNG" id="3_k3ffr"]
+[ext_resource type="Texture2D" uid="uid://7feq7llddijb" path="res://assets/art/bacground attempt 2/IMG_0482.PNG" id="4_klayr"]
+
+[node name="space background" type="ParallaxBackground"]
+script = ExtResource("1_d0a4c")
+
+[node name="black Back" type="ParallaxLayer" parent="."]
+z_index = -10
+
+[node name="ColorRect" type="ColorRect" parent="black Back"]
+offset_left = -81.0
+offset_top = -119.0
+offset_right = 81.0
+offset_bottom = 119.0
+color = Color(0, 0, 0, 1)
+
+[node name="far stars" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+z_index = -9
+motion_mirroring = Vector2(0, 238)
+
+[node name="TextureRect" type="TextureRect" parent="far stars"]
+offset_left = -80.0
+offset_right = 82.0
+offset_bottom = 238.0
+texture = ExtResource("2_713i1")
+stretch_mode = 1
+
+[node name="mid stars" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+z_index = -8
+motion_mirroring = Vector2(0, 238)
+
+[node name="TextureRect" type="TextureRect" parent="mid stars"]
+offset_left = -80.0
+offset_right = 82.0
+offset_bottom = 238.0
+texture = ExtResource("3_k3ffr")
+stretch_mode = 1
+
+[node name="close stars" type="ParallaxLayer" parent="."]
+unique_name_in_owner = true
+z_index = -7
+motion_mirroring = Vector2(0, 238)
+
+[node name="TextureRect" type="TextureRect" parent="close stars"]
+offset_left = -80.0
+offset_right = 82.0
+offset_bottom = 238.0
+texture = ExtResource("4_klayr")
+stretch_mode = 1

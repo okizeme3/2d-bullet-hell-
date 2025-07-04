@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://co2yi5drlxje"]
+
+[node name="star particles" type="CPUParticles2D"]
+amount = 40
+lifetime = 4.0
+emission_shape = 3
+emission_rect_extents = Vector2(90, 1)
+gravity = Vector2(0, 50)

@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="2_tfkbm"]
 [ext_resource type="Texture2D" uid="uid://dsmy426fgw4mo" path="res://assets/art/explosion/IMG_0404.PNG" id="3_h1pjn"]
 [ext_resource type="Texture2D" uid="uid://cakty4w68rcpw" path="res://assets/art/explosion/IMG_0407.PNG" id="4_qd15n"]
-[ext_resource type="Texture2D" uid="uid://dv8p620uuccd2" path="res://assets/art/explosion/IMG_0411.PNG" id="5_btmy1"]
 [ext_resource type="Texture2D" uid="uid://b22sbogqew8mb" path="res://assets/art/explosion/IMG_0405.PNG" id="6_l7vfq"]
 [ext_resource type="Texture2D" uid="uid://cyfspn4h2a26d" path="res://assets/art/explosion/IMG_0408.PNG" id="7_uda2g"]
 [ext_resource type="Texture2D" uid="uid://cmhajdbnvg7ue" path="res://assets/art/explosion/IMG_0403.PNG" id="8_0mnfq"]
@@ -20,6 +19,9 @@
 shader = ExtResource("2_adrxq")
 shader_parameter/enabled = false
 shader_parameter/tint = Color(1, 1, 1, 1)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_8lh2w"]
+load_path = "res://.godot/imported/IMG_0411.PNG-a6a7a27f1af9f4d0bae6907af18673de.ctex"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sdb3y"]
 atlas = ExtResource("2_tfkbm")
@@ -38,7 +40,7 @@ animations = [{
 "texture": ExtResource("4_qd15n")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_btmy1")
+"texture": SubResource("CompressedTexture2D_8lh2w")
 }, {
 "duration": 1.0,
 "texture": ExtResource("6_l7vfq")
@@ -52,7 +54,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("9_gak0x")
 }, {
-"duration": 5.0,
+"duration": 1.0,
 "texture": ExtResource("10_4gf1q")
 }],
 "loop": false,

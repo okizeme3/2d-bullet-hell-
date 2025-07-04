@@ -23,6 +23,8 @@ Gamemanager="*res://scripts/gamemanager.gd"
 
 window/size/viewport_width=648
 window/size/viewport_height=950
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
 
 [global_group]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bs4ly4w88obh6"
-path="res://.godot/imported/IMG_0411.PNG-a6a7a27f1af9f4d0bae6907af18673de.ctex"
+uid="uid://tk3goyqdpqjp"
+path="res://.godot/imported/IMG_0481.PNG-00c6181b80090e0b5c4011ee915390e5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/explosion/IMG_0411.PNG"
-dest_files=["res://.godot/imported/IMG_0411.PNG-a6a7a27f1af9f4d0bae6907af18673de.ctex"]
+source_file="res://assets/art/bacground attempt 2/IMG_0481.PNG"
+dest_files=["res://.godot/imported/IMG_0481.PNG-00c6181b80090e0b5c4011ee915390e5.ctex"]
 
 [params]
 

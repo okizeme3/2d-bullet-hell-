@@ -1,10 +1,15 @@
 extends Area2D
 
+@onready var sprite_2d: AnimatedSprite2D = $Sprite2D
 @onready var direction_change: Timer = $"direction change"
 @onready var double_lazer = get_tree().get_first_node_in_group("lazer")
 @onready var player_ship = get_tree().get_first_node_in_group("player")
+@onready var DT: Timer = $"death timer"
+@onready var hitbox: CollisionShape2D = $CollisionShape2D
 
+var alive = true
 var direction = 1
+
 func  _ready() -> void:
 	set_direction()
 	
@@ -16,19 +21,29 @@ func _process(delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("die"):
-		if body.alive:
-			body.die()
+		if alive:
+			if body.alive:
+				body.die()
 	if body.is_in_group("lazer"): 
 		death()
 		Gamemanager.score += 20
 		body.expire()
 
 func death():
+	alive = false
+	hitbox.disabled = true
+	sprite_2d.play("death")
+	await sprite_2d.animation_finished
 	queue_free()
+
 func move_left():
-	position += Vector2(1,1).normalized()
+	if alive:
+		position += Vector2(1,1).normalized()
+	else : position = position
 func move_right():
-	position += Vector2(-1,1).normalized()
+	if alive:
+		position += Vector2(-1,1).normalized()
+	else : position = position
 
 func set_direction():
 	if position.x >0:

@@ -1,7 +1,63 @@
-[gd_scene load_steps=4 format=3 uid="uid://bc4318a43q8i2"]
+[gd_scene load_steps=15 format=3 uid="uid://bc4318a43q8i2"]
 
 [ext_resource type="Script" path="res://scripts/robot_enemy.gd" id="1_l6b6o"]
 [ext_resource type="Texture2D" uid="uid://bltv1rubna3be" path="res://assets/art/IMG_0392.PNG" id="2_lfprf"]
+[ext_resource type="Texture2D" uid="uid://cgggr3nt587vv" path="res://assets/art/electric explosion/IMG_0469.PNG" id="3_365n7"]
+[ext_resource type="Texture2D" uid="uid://dr0e1ndnqvctp" path="res://assets/art/electric explosion/IMG_0470.PNG" id="4_vtk5s"]
+[ext_resource type="Texture2D" uid="uid://cyqeyvm4df34e" path="res://assets/art/electric explosion/IMG_0471.PNG" id="5_e0bvi"]
+[ext_resource type="Texture2D" uid="uid://cu5p5ppv6gv1" path="res://assets/art/electric explosion/IMG_0449.PNG" id="6_k7ssw"]
+[ext_resource type="Texture2D" uid="uid://t63r2yornbbn" path="res://assets/art/electric explosion/IMG_0473.PNG" id="7_q76jl"]
+[ext_resource type="Texture2D" uid="uid://doogq7lov1vb5" path="res://assets/art/electric explosion/IMG_0474.PNG" id="8_vddwa"]
+[ext_resource type="Texture2D" uid="uid://0jbkvp8vgdjf" path="res://assets/art/electric explosion/IMG_0475.PNG" id="9_nl0lu"]
+[ext_resource type="Texture2D" uid="uid://be1ayburqbh" path="res://assets/art/electric explosion/IMG_0476.PNG" id="10_bmhtq"]
+[ext_resource type="Texture2D" uid="uid://c5tqxnwae81j5" path="res://assets/art/explosion/IMG_0410.PNG" id="11_4oj6o"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8whmi"]
+atlas = ExtResource("2_lfprf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ci2a1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8whmi")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_365n7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_vtk5s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_e0bvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k7ssw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_q76jl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vddwa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_nl0lu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bmhtq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_4oj6o")
+}],
+"loop": false,
+"name": &"death",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4u3f"]
 radius = 6.0
@@ -10,16 +66,18 @@ radius = 6.0
 collision_mask = 3
 script = ExtResource("1_l6b6o")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_lfprf")
-region_enabled = true
-region_rect = Rect2(32, 0, 16, 16)
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ci2a1")
+animation = &"Idle"
+autoplay = "Idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_a4u3f")
 
 [node name="direction change" type="Timer" parent="."]
 autostart = true
+
+[node name="death timer" type="Timer" parent="."]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="direction change" to="." method="_on_direction_change_timeout"]
