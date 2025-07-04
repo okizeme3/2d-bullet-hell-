@@ -26,7 +26,7 @@ func  _process(delta: float) -> void:
 		if direction == 1:
 			move_right()
 	if attacking:
-		attack()
+		attack() 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("die"):
@@ -53,9 +53,9 @@ func  shoot():
 	game.add_child.call_deferred(instance)
 
 func move_left():
-	position.x -= 1
+	position.x -= 1 
 func move_right():
-	position.x +=  1
+	position.x +=  1 
 
 func _on_shoot_interval_timeout() -> void:
 	can_shoot = true
@@ -67,11 +67,11 @@ func set_direction():
 		direction = 1
 
 func  attack():
-	position.y += 1
+	position.y += 1 
 	if global_position.x > player_ship.global_position.x:
-		global_position.x += -1
+		global_position.x += -1 
 	if global_position.x < player_ship.global_position.x:
-		global_position.x += 1
+		global_position.x += 1 
 
 func _on_move_interval_timeout() -> void:
 	direction *= -1

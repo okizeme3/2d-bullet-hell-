@@ -38,11 +38,11 @@ func death():
 
 func move_left():
 	if alive:
-		position += Vector2(1,1).normalized()
+		position += Vector2(1,1).normalized() 
 	else : position = position
 func move_right():
 	if alive:
-		position += Vector2(-1,1).normalized()
+		position += Vector2(-1,1).normalized() 
 	else : position = position
 
 func set_direction():
