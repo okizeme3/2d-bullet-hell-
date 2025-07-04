@@ -6,6 +6,7 @@ extends Area2D
 @onready var shoot_interval: Timer = $"shoot interval"
 @export var Explosion : PackedScene
 
+var speed : float = 75.0
 var intro = true
 var direction = 1
 var i = 0
@@ -20,13 +21,13 @@ func  _process(delta: float) -> void:
 		can_shoot = false
 		shoot_interval.start()
 	position = position.clamp(Vector2(-81,-119),Vector2(81,119))
-	if attacking == false:
+	if !attacking:
 		if direction == -1:
-			move_left()
+			move_left(delta)
 		if direction == 1:
-			move_right()
+			move_right(delta)
 	if attacking:
-		attack() 
+		attack(delta) 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("die"):
@@ -52,10 +53,10 @@ func  shoot():
 	instance.spawnrot = rotation
 	game.add_child.call_deferred(instance)
 
-func move_left():
-	position.x -= 1 
-func move_right():
-	position.x +=  1 
+func move_left(delta: float):
+	position.x -= speed * delta 
+func move_right(delta : float):
+	position.x +=  speed * delta 
 
 func _on_shoot_interval_timeout() -> void:
 	can_shoot = true
@@ -66,12 +67,12 @@ func set_direction():
 	else:
 		direction = 1
 
-func  attack():
-	position.y += 1 
+func  attack(delta: float):
+	position.y += speed * delta 
 	if global_position.x > player_ship.global_position.x:
-		global_position.x += -1 
+		global_position.x -= speed * delta
 	if global_position.x < player_ship.global_position.x:
-		global_position.x += 1 
+		global_position.x += speed * delta
 
 func _on_move_interval_timeout() -> void:
 	direction *= -1

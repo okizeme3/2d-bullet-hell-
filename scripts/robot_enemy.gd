@@ -9,15 +9,16 @@ extends Area2D
 
 var alive = true
 var direction = 1
+var speed : float = 70.0
 
 func  _ready() -> void:
 	set_direction()
 	
 func _process(delta: float) -> void:
 	if direction == 1:
-		move_left()
+		move_left(delta)
 	if direction == -1:
-		move_right()
+		move_right(delta)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("die"):
@@ -37,13 +38,13 @@ func death():
 	await sprite_2d.animation_finished
 	queue_free()
 
-func move_left():
+func move_left(delta: float):
 	if alive:
-		position += Vector2(1,1).normalized() 
+		position += Vector2(1,1).normalized() * speed * delta
 	else : position = position
-func move_right():
+func move_right(delta : float):
 	if alive:
-		position += Vector2(-1,1).normalized() 
+		position += Vector2(-1,1).normalized() * speed * delta
 	else : position = position
 
 func set_direction():

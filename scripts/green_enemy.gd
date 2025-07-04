@@ -4,8 +4,10 @@ extends Area2D
 @onready var score: Label = $"../labels and textures/score"
 @export var Explosion : PackedScene
 
+var  speed : float = 75
+
 func _process(delta: float) -> void:
-	position.y += 1 
+	position.y += 1 * speed * delta
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("die"):
