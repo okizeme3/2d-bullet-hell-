@@ -25,9 +25,10 @@ func _on_body_entered(body: Node2D) -> void:
 			if body.alive:
 				body.die()
 	if body.is_in_group("lazer"): 
+		if alive:
+			Gamemanager.score += 20
+			body.expire()
 		death()
-		Gamemanager.score += 20
-		body.expire()
 
 func death():
 	alive = false
