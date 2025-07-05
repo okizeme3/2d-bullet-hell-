@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://ca65thmub5xao"]
+[gd_scene load_steps=26 format=3 uid="uid://ca65thmub5xao"]
 
 [ext_resource type="Script" path="res://scripts/player_ship.gd" id="1_ynhdv"]
 [ext_resource type="Shader" uid="uid://c5n6equdr30ja" path="res://shader/respawn_flash.tres" id="2_adrxq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cxxuvdjgck5rw" path="res://assets/art/explosion/IMG_0409.PNG" id="2_t0x58"]
 [ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="2_tfkbm"]
 [ext_resource type="Texture2D" uid="uid://dsmy426fgw4mo" path="res://assets/art/explosion/IMG_0404.PNG" id="3_h1pjn"]
+[ext_resource type="PackedScene" uid="uid://bouaq5d23kmkh" path="res://scences/ship_bits.tscn" id="3_jfopp"]
 [ext_resource type="Texture2D" uid="uid://cakty4w68rcpw" path="res://assets/art/explosion/IMG_0407.PNG" id="4_qd15n"]
 [ext_resource type="Texture2D" uid="uid://b22sbogqew8mb" path="res://assets/art/explosion/IMG_0405.PNG" id="6_l7vfq"]
 [ext_resource type="Texture2D" uid="uid://cyfspn4h2a26d" path="res://assets/art/explosion/IMG_0408.PNG" id="7_uda2g"]
@@ -148,6 +149,7 @@ radius = 7.0
 motion_mode = 1
 script = ExtResource("1_ynhdv")
 ghost_node = ExtResource("2_iy4ts")
+Explosion = ExtResource("3_jfopp")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_mr7o4")

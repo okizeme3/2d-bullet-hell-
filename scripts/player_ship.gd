@@ -20,6 +20,7 @@ extends CharacterBody2D
 @export var ghost_node : PackedScene
 @onready var ghost_timer: Timer = $"ghost timer"
 
+@export var Explosion : PackedScene
 @export var speed = 150
 var alive = true
 var lives= 3
@@ -76,6 +77,10 @@ func die():
 	sprite_2d.play("death")
 	fire_left.play("death")
 	fire_right.play("death")
+	var explosion_instance = Explosion.instantiate()
+	explosion_instance.position = position
+	get_parent().add_child(explosion_instance)
+	explosion_instance.emitting = true
 	if alive== false and lives>0:
 		lives-= 1
 		lives_label.text = "X"+ str(lives)
