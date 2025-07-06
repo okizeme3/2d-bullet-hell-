@@ -6,5 +6,7 @@
 script = ExtResource("1_hnka4")
 
 [node name="yellow Spawn Interval" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
 
 [connection signal="timeout" from="yellow Spawn Interval" to="." method="_on_yellow_spawn_interval_timeout"]

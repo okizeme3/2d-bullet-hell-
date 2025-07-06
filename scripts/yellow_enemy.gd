@@ -5,6 +5,7 @@ extends Area2D
 @onready var game = get_tree().get_root().get_node("game")
 @onready var shoot_interval: Timer = $"shoot interval"
 @export var Explosion : PackedScene
+@onready var move_interval: Timer = $"move interval"
 
 var speed : float = 75.0
 var intro = true
@@ -12,22 +13,25 @@ var direction = 1
 var i = 0
 var can_shoot = true
 var attacking = false
+var entering : bool = true
 
 func _ready() -> void:
 	set_direction()
 func  _process(delta: float) -> void:
-	if can_shoot and !attacking:
-		shoot()
-		can_shoot = false
-		shoot_interval.start()
-	position = position.clamp(Vector2(-81,-119),Vector2(81,119))
-	if !attacking:
-		if direction == -1:
-			move_left(delta)
-		if direction == 1:
-			move_right(delta)
-	if attacking:
-		attack(delta) 
+	if entering:
+		enter(delta)
+	if !entering:
+		if can_shoot and !attacking:
+			shoot()
+			can_shoot = false
+			shoot_interval.start()
+		if !attacking:
+			if direction == -1:
+				move_left(delta)
+			if direction == 1:
+				move_right(delta)
+		if attacking:
+			attack(delta)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and body.has_method("die"):
@@ -80,3 +84,16 @@ func _on_move_interval_timeout() -> void:
 
 func _on_attack_timer_timeout() -> void:
 	attacking = true
+
+
+func _on_entrance_1_timeout() -> void:
+	entering = false
+	move_interval.start()
+	print("done")
+
+func enter(delta: float):
+	if entering:
+		if direction == -1:
+			move_left(delta)
+		if direction == 1:
+			move_right(delta)

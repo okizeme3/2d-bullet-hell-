@@ -49,6 +49,7 @@ func get_input():
 		if Input.is_action_just_pressed("dash"):
 			if !dashing:
 				dash_velocity = dash
+				ghost_timer.start()
 				if tween:
 					tween.stop()
 				tween = create_tween()
@@ -58,6 +59,8 @@ func get_input():
 				bhb.disabled = true
 				dash_cooldown.start()
 				dash_invi.start()
+			await tween.finished
+			ghost_timer.stop()
 func _physics_process(delta):
 	get_input()
 	move_and_slide()
@@ -138,8 +141,7 @@ func add_ghost():
 	get_tree().current_scene.add_child(ghost)
 
 func _on_ghost_timer_timeout() -> void:
-	#add_ghost()
-	pass
+	add_ghost()
 
 func add_life():
 	lives+=1

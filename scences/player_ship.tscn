@@ -211,7 +211,7 @@ wait_time = 0.5
 wait_time = 0.2
 
 [node name="ghost timer" type="Timer" parent="."]
-wait_time = 0.15
+wait_time = 0.05
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="shoot intervel" to="." method="_on_shoot_intervel_timeout"]

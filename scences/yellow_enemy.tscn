@@ -26,10 +26,14 @@ position = Vector2(0, 7)
 [node name="shoot interval" type="Timer" parent="."]
 
 [node name="move interval" type="Timer" parent="."]
-autostart = true
 
 [node name="attack timer" type="Timer" parent="."]
 wait_time = 6.096
+one_shot = true
+autostart = true
+
+[node name="entrance 1" type="Timer" parent="."]
+wait_time = 0.65
 one_shot = true
 autostart = true
 
@@ -37,3 +41,4 @@ autostart = true
 [connection signal="timeout" from="shoot interval" to="." method="_on_shoot_interval_timeout"]
 [connection signal="timeout" from="move interval" to="." method="_on_move_interval_timeout"]
 [connection signal="timeout" from="attack timer" to="." method="_on_attack_timer_timeout"]
+[connection signal="timeout" from="entrance 1" to="." method="_on_entrance_1_timeout"]

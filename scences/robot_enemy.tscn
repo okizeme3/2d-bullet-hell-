@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://bc4318a43q8i2"]
+[gd_scene load_steps=16 format=3 uid="uid://bc4318a43q8i2"]
 
 [ext_resource type="Script" path="res://scripts/robot_enemy.gd" id="1_l6b6o"]
+[ext_resource type="PackedScene" uid="uid://dr1dhnitkd3w0" path="res://scences/robot_bits.tscn" id="2_0o1wn"]
 [ext_resource type="Texture2D" uid="uid://bltv1rubna3be" path="res://assets/art/IMG_0392.PNG" id="2_lfprf"]
 [ext_resource type="Texture2D" uid="uid://cgggr3nt587vv" path="res://assets/art/electric explosion/IMG_0469.PNG" id="3_365n7"]
 [ext_resource type="Texture2D" uid="uid://dr0e1ndnqvctp" path="res://assets/art/electric explosion/IMG_0470.PNG" id="4_vtk5s"]
@@ -65,6 +66,7 @@ radius = 6.0
 [node name="robot enemy" type="Area2D"]
 collision_mask = 3
 script = ExtResource("1_l6b6o")
+Explosion = ExtResource("2_0o1wn")
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ci2a1")

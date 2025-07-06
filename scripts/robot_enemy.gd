@@ -6,6 +6,7 @@ extends Area2D
 @onready var player_ship = get_tree().get_first_node_in_group("player")
 @onready var DT: Timer = $"death timer"
 @onready var hitbox: CollisionShape2D = $CollisionShape2D
+@export var Explosion : PackedScene
 
 var alive = true
 var direction = 1
@@ -35,6 +36,10 @@ func death():
 	alive = false
 	hitbox.disabled = true
 	sprite_2d.play("death")
+	var explosion_instance = Explosion.instantiate()
+	explosion_instance.position = position
+	get_parent().add_child(explosion_instance)
+	explosion_instance.emitting = true
 	await sprite_2d.animation_finished
 	queue_free()
 
