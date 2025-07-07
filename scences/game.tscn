@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dev141ytg4iyn"]
+[gd_scene load_steps=18 format=3 uid="uid://dev141ytg4iyn"]
 
 [ext_resource type="PackedScene" uid="uid://ca65thmub5xao" path="res://scences/player_ship.tscn" id="1_5mmqh"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_do3vv"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dbwy5iblamyar" path="res://scences/advanced_enemy_spawner.tscn" id="9_n4mol"]
 [ext_resource type="PackedScene" uid="uid://bc4318a43q8i2" path="res://scences/robot_enemy.tscn" id="11_0muqq"]
 [ext_resource type="PackedScene" uid="uid://bcmb2k0ja51io" path="res://scences/yellow_enemy.tscn" id="12_p1ujp"]
+[ext_resource type="PackedScene" uid="uid://cxaufcp2wpll3" path="res://MENUS/pausemenu.tscn" id="16_5rib2"]
 [ext_resource type="PackedScene" uid="uid://c4w2mhtvquqng" path="res://scences/space_background.tscn" id="16_e7nxy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtmo2"]
@@ -116,6 +117,10 @@ texture_over = ExtResource("9_0k55y")
 texture_progress = ExtResource("9_0k55y")
 
 [node name="space background" parent="." instance=ExtResource("16_e7nxy")]
+
+[node name="pausemenu" parent="." instance=ExtResource("16_5rib2")]
+visible = false
+z_index = 10
 
 [connection signal="body_entered" from="Camera2D/bullet killzone" to="." method="_on_bullet_killzone_body_entered"]
 [connection signal="body_entered" from="Camera2D/bullet killzone2" to="." method="_on_bullet_killzone_body_entered"]

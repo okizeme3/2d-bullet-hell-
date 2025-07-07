@@ -1,0 +1,58 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxaufcp2wpll3"]
+
+[ext_resource type="Script" path="res://MENUS/pausemenu.gd" id="1_cvrfp"]
+[ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="1_jan4c"]
+
+[node name="pausemenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_cvrfp")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -40.0
+offset_top = -37.0
+offset_right = 40.0
+offset_bottom = 37.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="resume" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jan4c")
+theme_override_font_sizes/font_size = 5
+text = "RESUME"
+
+[node name="options" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jan4c")
+theme_override_font_sizes/font_size = 5
+text = "OPTIONS"
+
+[node name="QUIT" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_jan4c")
+theme_override_font_sizes/font_size = 5
+text = "MAIN MENU
+"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = -47.0
+offset_top = -105.0
+offset_right = 49.0
+offset_bottom = -59.0
+theme_override_fonts/font = ExtResource("1_jan4c")
+text = "paused"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]
