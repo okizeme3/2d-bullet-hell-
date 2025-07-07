@@ -33,13 +33,15 @@ func _on_body_entered(body: Node2D) -> void:
 		death()
 
 func death():
+	if alive:
+		var explosion_instance = Explosion.instantiate()
+		explosion_instance.position = position
+		get_parent().add_child(explosion_instance)
+		explosion_instance.emitting = true
 	alive = false
 	hitbox.disabled = true
 	sprite_2d.play("death")
-	var explosion_instance = Explosion.instantiate()
-	explosion_instance.position = position
-	get_parent().add_child(explosion_instance)
-	explosion_instance.emitting = true
+	
 	await sprite_2d.animation_finished
 	queue_free()
 
