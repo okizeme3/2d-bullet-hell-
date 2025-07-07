@@ -51,8 +51,5 @@ offset_bottom = -59.0
 theme_override_fonts/font = ExtResource("1_jan4c")
 text = "paused"
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
-
 [connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]
