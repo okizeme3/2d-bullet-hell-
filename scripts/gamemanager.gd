@@ -7,9 +7,15 @@ var gameOver : bool = false
 func _process(delta: float) -> void:
 	#check_score()
 	pass
+	
+func score_calculator():
+	if gameOver:
+		if score > high_score:
+			high_score = score
+	print(high_score)
 
 var score = 0
-
+var  high_score = 0
 func check_score():
 	#if score !=0 and score % 100 ==0:
 		#bonus()

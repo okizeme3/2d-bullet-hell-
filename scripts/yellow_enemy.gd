@@ -89,7 +89,6 @@ func _on_attack_timer_timeout() -> void:
 func _on_entrance_1_timeout() -> void:
 	entering = false
 	move_interval.start()
-	print("done")
 
 func enter(delta: float):
 	if entering:

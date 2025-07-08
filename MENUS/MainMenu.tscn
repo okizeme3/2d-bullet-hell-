@@ -1,9 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3wj0p6s16ukc"]
+[gd_scene load_steps=10 format=3 uid="uid://b3wj0p6s16ukc"]
 
 [ext_resource type="Script" path="res://MENUS/main_menu.gd" id="1_820l7"]
-[ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="2_illfa"]
+[ext_resource type="Texture2D" uid="uid://cx1vws0etghwu" path="res://assets/art/Main Menu/IMG_0504.PNG" id="2_tdhb6"]
+[ext_resource type="Texture2D" uid="uid://db7wct0p5ttcp" path="res://assets/art/Main Menu/IMG_0505.PNG" id="3_3cp3l"]
 [ext_resource type="PackedScene" uid="uid://c4w2mhtvquqng" path="res://scences/space_background.tscn" id="3_mdxmt"]
+[ext_resource type="Texture2D" uid="uid://cqav5p28ctdc4" path="res://assets/art/Main Menu/IMG_0506.PNG" id="4_0iffm"]
 [ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="4_nsk08"]
+[ext_resource type="Texture2D" uid="uid://ddk3208l0jtcl" path="res://assets/art/Main Menu/IMG_0507.PNG" id="5_2rq7v"]
+[ext_resource type="Texture2D" uid="uid://cpehfcyhejk4i" path="res://assets/art/Main Menu/IMG_0508.PNG" id="6_jm6ml"]
+[ext_resource type="Texture2D" uid="uid://bhd3jlmm1tkre" path="res://assets/art/Main Menu/IMG_0509.PNG" id="7_77o8b"]
 
 [node name="Main Menu" type="Control"]
 process_mode = 3
@@ -25,24 +30,23 @@ offset_bottom = 50.0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="play" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="play" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_illfa")
-theme_override_font_sizes/font_size = 5
-text = "PLAY"
+texture_normal = ExtResource("2_tdhb6")
+texture_pressed = ExtResource("2_tdhb6")
+texture_hover = ExtResource("3_3cp3l")
 
-[node name="options" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="options" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_illfa")
-theme_override_font_sizes/font_size = 5
-text = "OPTIONS"
+texture_normal = ExtResource("4_0iffm")
+texture_pressed = ExtResource("4_0iffm")
+texture_hover = ExtResource("5_2rq7v")
 
-[node name="QUIT" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="QUIT" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_illfa")
-theme_override_font_sizes/font_size = 5
-text = "QUIT
-"
+texture_normal = ExtResource("6_jm6ml")
+texture_pressed = ExtResource("6_jm6ml")
+texture_hover = ExtResource("7_77o8b")
 
 [node name="Img0388" type="Sprite2D" parent="MarginContainer"]
 position = Vector2(40, -35)
