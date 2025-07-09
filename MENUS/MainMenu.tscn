@@ -8,8 +8,8 @@
 [ext_resource type="Script" path="res://MENUS/play.gd" id="4_l17d0"]
 [ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="4_nsk08"]
 [ext_resource type="Texture2D" uid="uid://ddk3208l0jtcl" path="res://assets/art/Main Menu/IMG_0507.PNG" id="5_2rq7v"]
-[ext_resource type="Texture2D" uid="uid://cpehfcyhejk4i" path="res://assets/art/Main Menu/IMG_0508.PNG" id="6_jm6ml"]
-[ext_resource type="Texture2D" uid="uid://bhd3jlmm1tkre" path="res://assets/art/Main Menu/IMG_0509.PNG" id="7_77o8b"]
+[ext_resource type="Texture2D" uid="uid://bc14evprla4yt" path="res://assets/art/Main Menu/IMG_0510.PNG" id="7_c5vq7"]
+[ext_resource type="Texture2D" uid="uid://cw0h14tqqypco" path="res://assets/art/Main Menu/IMG_0511.PNG" id="8_bh6tx"]
 
 [node name="Main Menu" type="Control"]
 process_mode = 3
@@ -45,15 +45,13 @@ texture_normal = ExtResource("4_0iffm")
 texture_pressed = ExtResource("4_0iffm")
 texture_hover = ExtResource("5_2rq7v")
 texture_focused = ExtResource("5_2rq7v")
-script = ExtResource("4_l17d0")
 
 [node name="QUIT" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("6_jm6ml")
-texture_pressed = ExtResource("6_jm6ml")
-texture_hover = ExtResource("7_77o8b")
-texture_focused = ExtResource("7_77o8b")
-script = ExtResource("4_l17d0")
+texture_normal = ExtResource("7_c5vq7")
+texture_pressed = ExtResource("7_c5vq7")
+texture_hover = ExtResource("8_bh6tx")
+texture_focused = ExtResource("8_bh6tx")
 
 [node name="Img0388" type="Sprite2D" parent="MarginContainer"]
 position = Vector2(40, -35)

@@ -1,11 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxaufcp2wpll3"]
+[gd_scene load_steps=10 format=3 uid="uid://cxaufcp2wpll3"]
 
 [ext_resource type="Script" path="res://MENUS/pausemenu.gd" id="1_cvrfp"]
 [ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="1_jan4c"]
+[ext_resource type="Texture2D" uid="uid://c15vmuylluhpo" path="res://assets/art/Main Menu/IMG_0514.PNG" id="2_ni4yj"]
 [ext_resource type="Texture2D" uid="uid://cqav5p28ctdc4" path="res://assets/art/Main Menu/IMG_0506.PNG" id="3_3r4qk"]
-[ext_resource type="Texture2D" uid="uid://cpehfcyhejk4i" path="res://assets/art/Main Menu/IMG_0508.PNG" id="3_tt2de"]
-[ext_resource type="Texture2D" uid="uid://bhd3jlmm1tkre" path="res://assets/art/Main Menu/IMG_0509.PNG" id="4_70q7y"]
+[ext_resource type="Texture2D" uid="uid://biyrxapqp7xcr" path="res://assets/art/Main Menu/IMG_0515.PNG" id="3_yo03c"]
+[ext_resource type="Script" path="res://MENUS/play.gd" id="4_adrqs"]
 [ext_resource type="Texture2D" uid="uid://ddk3208l0jtcl" path="res://assets/art/Main Menu/IMG_0507.PNG" id="4_kxvh3"]
+[ext_resource type="Texture2D" uid="uid://bc14evprla4yt" path="res://assets/art/Main Menu/IMG_0510.PNG" id="5_q2yxj"]
+[ext_resource type="Texture2D" uid="uid://cw0h14tqqypco" path="res://assets/art/Main Menu/IMG_0511.PNG" id="6_qiccm"]
 
 [node name="pausemenu" type="Control"]
 process_mode = 3
@@ -27,23 +30,26 @@ offset_bottom = 37.0
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="resume" type="Button" parent="MarginContainer/VBoxContainer"]
+[node name="resume" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("1_jan4c")
-theme_override_font_sizes/font_size = 5
-text = "RESUME"
+texture_normal = ExtResource("2_ni4yj")
+texture_pressed = ExtResource("2_ni4yj")
+texture_hover = ExtResource("3_yo03c")
+texture_focused = ExtResource("3_yo03c")
+script = ExtResource("4_adrqs")
 
 [node name="options" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("3_3r4qk")
 texture_pressed = ExtResource("3_3r4qk")
 texture_hover = ExtResource("4_kxvh3")
+texture_focused = ExtResource("4_kxvh3")
 
 [node name="QUIT" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-texture_normal = ExtResource("3_tt2de")
-texture_pressed = ExtResource("3_tt2de")
-texture_hover = ExtResource("4_70q7y")
+texture_normal = ExtResource("5_q2yxj")
+texture_hover = ExtResource("6_qiccm")
+texture_focused = ExtResource("6_qiccm")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
