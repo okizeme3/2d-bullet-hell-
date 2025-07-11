@@ -46,6 +46,13 @@ offset_top = -20.6316
 offset_right = 190.066
 offset_bottom = 3.36842
 
+[node name="RESET" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("11_ks1t0")
+theme_override_font_sizes/font_size = 5
+text = "Reset Highscore"
+
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
 offset_left = -32.0
@@ -77,4 +84,5 @@ text = "BACK"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Master volume" to="." method="_on_master_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Master volume/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/RESET" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
