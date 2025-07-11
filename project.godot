@@ -15,6 +15,10 @@ run/main_scene="res://MENUS/MainMenu.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="res://assets/Music/default_bus_layout.tres"
+
 [autoload]
 
 Gamemanager="*res://scripts/gamemanager.gd"
@@ -28,6 +32,8 @@ window/size/viewport_height=950
 
 lazer=""
 "enemy bullets"=""
+transition=""
+PauseMenu=""
 
 [input]
 

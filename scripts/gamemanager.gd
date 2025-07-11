@@ -3,6 +3,7 @@ extends Node2D
 @onready var player: CharacterBody2D = $"player ship"
 
 var gameOver : bool = false
+var MAsterVolume: float = 0.0
 
 func _process(delta: float) -> void:
 	#check_score()

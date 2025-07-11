@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxaufcp2wpll3"]
+[gd_scene load_steps=13 format=3 uid="uid://cxaufcp2wpll3"]
 
 [ext_resource type="Script" path="res://MENUS/pausemenu.gd" id="1_cvrfp"]
 [ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="1_jan4c"]
@@ -9,8 +9,11 @@
 [ext_resource type="Texture2D" uid="uid://ddk3208l0jtcl" path="res://assets/art/Main Menu/IMG_0507.PNG" id="4_kxvh3"]
 [ext_resource type="Texture2D" uid="uid://bc14evprla4yt" path="res://assets/art/Main Menu/IMG_0510.PNG" id="5_q2yxj"]
 [ext_resource type="Texture2D" uid="uid://cw0h14tqqypco" path="res://assets/art/Main Menu/IMG_0511.PNG" id="6_qiccm"]
+[ext_resource type="Texture2D" uid="uid://dw07ahypvxyip" path="res://assets/art/Main Menu/IMG_0512.PNG" id="7_ky013"]
+[ext_resource type="Texture2D" uid="uid://c7tk5xlsrjdob" path="res://assets/art/Main Menu/IMG_0513.PNG" id="8_le021"]
+[ext_resource type="PackedScene" uid="uid://dyfbl6sp7vs6g" path="res://MENUS/pause options.tscn" id="12_g3uxu"]
 
-[node name="pausemenu" type="Control"]
+[node name="pausemenu" type="Control" groups=["PauseMenu"]]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -45,6 +48,13 @@ texture_pressed = ExtResource("3_3r4qk")
 texture_hover = ExtResource("4_kxvh3")
 texture_focused = ExtResource("4_kxvh3")
 
+[node name="Restart" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_ky013")
+texture_pressed = ExtResource("7_ky013")
+texture_hover = ExtResource("8_le021")
+texture_focused = ExtResource("8_le021")
+
 [node name="QUIT" type="TextureButton" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 texture_normal = ExtResource("5_q2yxj")
@@ -53,12 +63,19 @@ texture_focused = ExtResource("6_qiccm")
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 0
-offset_left = -47.0
-offset_top = -105.0
-offset_right = 49.0
-offset_bottom = -59.0
+offset_left = -43.0
+offset_top = -106.0
+offset_right = 47.0
+offset_bottom = -64.0
 theme_override_fonts/font = ExtResource("1_jan4c")
+theme_override_font_sizes/font_size = 15
 text = "paused"
 
+[node name="options" parent="." instance=ExtResource("12_g3uxu")]
+visible = false
+layout_mode = 1
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]

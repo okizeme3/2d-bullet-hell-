@@ -1,6 +1,9 @@
 extends Control
 
 var paused = false
+@onready var options: Control = $options
+@onready var margin_container: MarginContainer = $MarginContainer
+@onready var label: Label = $Label
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -25,3 +28,15 @@ func  pauseMenu():
 		self.show()
 		get_tree().paused= true 
 	paused = !paused
+
+
+func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	paused = ! paused
+	get_tree().reload_current_scene()
+
+
+func _on_options_pressed() -> void:
+	margin_container.hide()
+	label.hide()
+	options.show()
