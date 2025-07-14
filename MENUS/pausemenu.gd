@@ -31,6 +31,7 @@ func  pauseMenu():
 
 
 func _on_restart_pressed() -> void:
+	Gamemanager.score = 0
 	get_tree().paused = false
 	paused = ! paused
 	get_tree().reload_current_scene()

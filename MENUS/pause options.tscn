@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyfbl6sp7vs6g"]
+[gd_scene load_steps=5 format=3 uid="uid://dyfbl6sp7vs6g"]
 
 [ext_resource type="Script" path="res://MENUS/PO.gd" id="1_vjcly"]
 [ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="2_ss415"]
-[ext_resource type="AudioStream" uid="uid://vxsqh7cnwqg2" path="res://assets/Music/Temple.mp3" id="3_m4y2v"]
+[ext_resource type="AudioStream" uid="uid://dcwhqf8kw3mc1" path="res://assets/sfx/UI_back.mp3" id="3_dieyh"]
+[ext_resource type="AudioStream" uid="uid://d0w0ntgpxnbkk" path="res://assets/sfx/ui_yes.mp3" id="4_6ik5b"]
 
-[node name="options" type="Control"]
+[node name="pause optiions" type="Control"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -25,7 +26,7 @@ scale = Vector2(0.770779, 0.760001)
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
+[node name="Master" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_ss415")
 theme_override_font_sizes/font_size = 5
@@ -37,6 +38,24 @@ min_value = -20.0
 max_value = 20.0
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/Master volume"]
+layout_mode = 0
+offset_left = 166.066
+offset_top = -20.6316
+offset_right = 190.066
+offset_bottom = 3.36842
+
+[node name="SFX" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ss415")
+theme_override_font_sizes/font_size = 5
+text = "SFX Volume:                                              Mute:"
+
+[node name="SFX volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -20.0
+max_value = 20.0
+
+[node name="sfx" type="CheckBox" parent="MarginContainer/VBoxContainer/SFX volume"]
 layout_mode = 0
 offset_left = 166.066
 offset_top = -20.6316
@@ -56,8 +75,11 @@ text = "options"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_m4y2v")
+[node name="UI_back" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_dieyh")
+
+[node name="UI_yes" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6ik5b")
 
 [node name="Button" type="Button" parent="."]
 layout_mode = 0
@@ -71,4 +93,6 @@ text = "BACK"
 
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Master volume" to="." method="_on_master_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Master volume/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SFX volume" to="." method="_on_sfx_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/SFX volume/sfx" to="." method="_on_sfx_toggled"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

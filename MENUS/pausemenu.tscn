@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxaufcp2wpll3"]
+[gd_scene load_steps=15 format=3 uid="uid://cxaufcp2wpll3"]
 
 [ext_resource type="Script" path="res://MENUS/pausemenu.gd" id="1_cvrfp"]
 [ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="1_jan4c"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://dw07ahypvxyip" path="res://assets/art/Main Menu/IMG_0512.PNG" id="7_ky013"]
 [ext_resource type="Texture2D" uid="uid://c7tk5xlsrjdob" path="res://assets/art/Main Menu/IMG_0513.PNG" id="8_le021"]
 [ext_resource type="PackedScene" uid="uid://dyfbl6sp7vs6g" path="res://MENUS/pause options.tscn" id="12_g3uxu"]
+[ext_resource type="AudioStream" uid="uid://d0w0ntgpxnbkk" path="res://assets/sfx/ui_yes.mp3" id="13_8150p"]
+[ext_resource type="AudioStream" uid="uid://bv8us51j6s842" path="res://assets/sfx/UI_quit.mp3" id="14_olrk7"]
 
 [node name="pausemenu" type="Control" groups=["PauseMenu"]]
 process_mode = 3
@@ -74,6 +76,14 @@ text = "paused"
 [node name="options" parent="." instance=ExtResource("12_g3uxu")]
 visible = false
 layout_mode = 1
+
+[node name="UI_yes" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_8150p")
+
+[node name="UI_quit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_olrk7")
+
+[node name="UI_back" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/options" to="." method="_on_options_pressed"]

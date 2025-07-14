@@ -72,8 +72,14 @@ position = Vector2(-123, -76)
 [node name="simple spawner" parent="enemy_spawners" instance=ExtResource("8_bbmyy")]
 position = Vector2(-29, -153)
 
+[node name="simple spawner2" parent="enemy_spawners" instance=ExtResource("8_bbmyy")]
+position = Vector2(29, -153)
+
 [node name="advanced enemy spawner" parent="enemy_spawners" instance=ExtResource("9_n4mol")]
 position = Vector2(123, -97)
+
+[node name="advanced enemy spawner2" parent="enemy_spawners" instance=ExtResource("9_n4mol")]
+position = Vector2(-123, -97)
 
 [node name="labels and textures" type="Node" parent="."]
 
