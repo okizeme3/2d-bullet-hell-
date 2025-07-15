@@ -103,7 +103,6 @@ func respawn():
 func gameover():
 	Gamemanager.gameOver = true
 	Gamemanager.score_calculator()
-	Gamemanager.score = 0
 
 func _on_timer_timeout() -> void:
 	respawn()

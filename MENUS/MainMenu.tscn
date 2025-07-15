@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b3wj0p6s16ukc"]
+[gd_scene load_steps=12 format=3 uid="uid://b3wj0p6s16ukc"]
 
 [ext_resource type="Script" path="res://MENUS/main_menu.gd" id="1_820l7"]
 [ext_resource type="Texture2D" uid="uid://cx1vws0etghwu" path="res://assets/art/Main Menu/IMG_0504.PNG" id="2_tdhb6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ddk3208l0jtcl" path="res://assets/art/Main Menu/IMG_0507.PNG" id="5_2rq7v"]
 [ext_resource type="Texture2D" uid="uid://bc14evprla4yt" path="res://assets/art/Main Menu/IMG_0510.PNG" id="7_c5vq7"]
 [ext_resource type="Texture2D" uid="uid://cw0h14tqqypco" path="res://assets/art/Main Menu/IMG_0511.PNG" id="8_bh6tx"]
+[ext_resource type="PackedScene" uid="uid://5vw2ow4drjmk" path="res://scences/fade.tscn" id="11_sbhxt"]
 
 [node name="Main Menu" type="Control"]
 process_mode = 3
@@ -20,6 +21,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_820l7")
+
+[node name="fade" parent="." instance=ExtResource("11_sbhxt")]
+z_index = 11
+layout_mode = 1
+offset_left = -81.0
+offset_top = -119.0
+offset_right = -568.0
+offset_bottom = -830.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 0
@@ -63,6 +72,9 @@ zoom = Vector2(4, 4)
 
 [node name="space background" parent="." instance=ExtResource("3_mdxmt")]
 
+[node name="fade_timer" type="Timer" parent="."]
+
 [connection signal="pressed" from="MarginContainer/VBoxContainer/play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="fade_timer" to="." method="_on_fade_timer_timeout"]

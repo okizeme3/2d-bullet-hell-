@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://db0ue2e2kvnlj"]
+
+[ext_resource type="Script" path="res://MENUS/game_over.gd" id="1_ivjiu"]
+[ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="2_dgqfd"]
+[ext_resource type="AudioStream" uid="uid://d0w0ntgpxnbkk" path="res://assets/sfx/ui_yes.mp3" id="4_dgi5e"]
+[ext_resource type="Texture2D" uid="uid://dw07ahypvxyip" path="res://assets/art/Main Menu/IMG_0512.PNG" id="7_uxsei"]
+[ext_resource type="Texture2D" uid="uid://c7tk5xlsrjdob" path="res://assets/art/Main Menu/IMG_0513.PNG" id="8_62agc"]
+[ext_resource type="Texture2D" uid="uid://bc14evprla4yt" path="res://assets/art/Main Menu/IMG_0510.PNG" id="9_64tv5"]
+[ext_resource type="PackedScene" uid="uid://5vw2ow4drjmk" path="res://scences/fade.tscn" id="9_xw5st"]
+[ext_resource type="Texture2D" uid="uid://cw0h14tqqypco" path="res://assets/art/Main Menu/IMG_0511.PNG" id="10_h67ae"]
+[ext_resource type="AudioStream" uid="uid://bv8us51j6s842" path="res://assets/sfx/UI_quit.mp3" id="14_oo7j5"]
+
+[node name="Game Over" type="Control" groups=["PauseMenu"]]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ivjiu")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -10
+layout_mode = 0
+offset_left = -84.0
+offset_top = -121.0
+offset_right = 84.0
+offset_bottom = 121.0
+color = Color(0, 0, 0, 1)
+
+[node name="fade" parent="." instance=ExtResource("9_xw5st")]
+z_index = 11
+layout_mode = 1
+offset_left = -84.0
+offset_top = -122.0
+offset_right = -564.0
+offset_bottom = -829.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_left = -40.0
+offset_top = 40.0
+offset_right = 40.0
+offset_bottom = 92.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Restart" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("7_uxsei")
+texture_pressed = ExtResource("7_uxsei")
+texture_hover = ExtResource("8_62agc")
+texture_focused = ExtResource("8_62agc")
+
+[node name="QUIT" type="TextureButton" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("9_64tv5")
+texture_hover = ExtResource("10_h67ae")
+texture_focused = ExtResource("10_h67ae")
+
+[node name="Game over" type="Label" parent="."]
+layout_mode = 0
+offset_left = -64.0
+offset_top = -104.0
+offset_right = 68.0
+offset_bottom = -62.0
+theme_override_fonts/font = ExtResource("2_dgqfd")
+theme_override_font_sizes/font_size = 15
+text = "Game Over"
+
+[node name="words or whatever" type="Label" parent="."]
+layout_mode = 0
+offset_left = -74.0
+offset_top = -40.0
+offset_right = 76.0
+offset_bottom = -26.0
+theme_override_fonts/font = ExtResource("2_dgqfd")
+theme_override_font_sizes/font_size = 5
+text = "The stars art calling out your name"
+
+[node name="score" type="Label" parent="."]
+layout_mode = 0
+offset_left = -27.0
+offset_top = -22.0
+offset_bottom = -8.0
+theme_override_fonts/font = ExtResource("2_dgqfd")
+theme_override_font_sizes/font_size = 5
+text = "score:"
+
+[node name="Highscore" type="Label" parent="."]
+layout_mode = 0
+offset_left = -46.0
+offset_top = -7.0
+offset_bottom = 7.0
+theme_override_fonts/font = ExtResource("2_dgqfd")
+theme_override_font_sizes/font_size = 5
+text = "High score:"
+
+[node name="UI_yes" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_dgi5e")
+
+[node name="UI_quit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_oo7j5")
+
+[node name="UI_back" type="AudioStreamPlayer" parent="."]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="fade_timer" type="Timer" parent="."]
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/QUIT" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="fade_timer" to="." method="_on_fade_timer_timeout"]

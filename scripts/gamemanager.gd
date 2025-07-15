@@ -1,14 +1,18 @@
 extends Node2D
 @onready var lives_label: Label = $"labels and textures/lives label"
 @onready var player: CharacterBody2D = $"player ship"
+@onready var fade_timer: Timer = $fade_timer
 
 var gameOver : bool = false
-var MAsterVolume: float = 0.0
+var MasterVolume: float = 0.0
+var SFXVolume : float = 0.0
 
 func _process(delta: float) -> void:
 	#check_score()
-	pass
+	if gameOver:
+		pass
 	
+
 func score_calculator():
 	if gameOver:
 		if score > high_score:
@@ -27,3 +31,11 @@ func _on_bullet_killzone_body_entered(body: Node2D) -> void:
 		body.expire()
 func bonus():
 	player.add_life()
+	
+
+	
+
+
+func _on_fade_timer_timeout() -> void:
+	get_tree().paused = true
+	get_tree().change_scene_to_file("res://MENUS/Game_Over.tscn")
