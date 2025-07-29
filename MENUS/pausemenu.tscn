@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cxaufcp2wpll3"]
+[gd_scene load_steps=16 format=3 uid="uid://cxaufcp2wpll3"]
 
 [ext_resource type="Script" path="res://MENUS/pausemenu.gd" id="1_cvrfp"]
 [ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="1_jan4c"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dyfbl6sp7vs6g" path="res://MENUS/pause options.tscn" id="12_g3uxu"]
 [ext_resource type="AudioStream" uid="uid://d0w0ntgpxnbkk" path="res://assets/sfx/ui_yes.mp3" id="13_8150p"]
 [ext_resource type="AudioStream" uid="uid://bv8us51j6s842" path="res://assets/sfx/UI_quit.mp3" id="14_olrk7"]
+[ext_resource type="AudioStream" uid="uid://dsnhar1cevbf0" path="res://assets/Music/Temple_elevator.wav" id="15_mkam0"]
 
 [node name="pausemenu" type="Control" groups=["PauseMenu"]]
 process_mode = 3
@@ -84,6 +85,9 @@ stream = ExtResource("13_8150p")
 stream = ExtResource("14_olrk7")
 
 [node name="UI_back" type="AudioStreamPlayer" parent="."]
+
+[node name="elevator" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_mkam0")
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/options" to="." method="_on_options_pressed"]

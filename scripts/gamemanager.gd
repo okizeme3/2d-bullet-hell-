@@ -7,6 +7,9 @@ var gameOver : bool = false
 var MasterVolume: float = 0.0
 var SFXVolume : float = 0.0
 
+func _ready() -> void:
+	ConfigHandler.load_audio_setting()
+	
 func _process(delta: float) -> void:
 	#check_score()
 	if gameOver:
@@ -17,10 +20,12 @@ func score_calculator():
 	if gameOver:
 		if score > high_score:
 			high_score = score
+			ConfigHandler.save_highscore(high_score)
 	print(high_score)
 
 var score = 0
-var high_score = 0
+@onready var high_score: int  = ConfigHandler.load_highscore()
+
 func check_score():
 	#if score !=0 and score % 100 ==0:
 		#bonus()

@@ -4,6 +4,7 @@ var paused = false
 @onready var options: Control = $options
 @onready var margin_container: MarginContainer = $MarginContainer
 @onready var label: Label = $Label
+@onready var elevator: AudioStreamPlayer = $elevator
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("pause"):
@@ -11,6 +12,7 @@ func _process(delta: float) -> void:
 
 func _on_resume_pressed() -> void:
 	self.hide()
+	elevator.stop()
 	get_tree().paused = false
 	paused = !paused
 
@@ -22,9 +24,11 @@ func _on_quit_pressed() -> void:
 func  pauseMenu():
 	
 	if paused:
+		elevator.stop()
 		self.hide()
 		get_tree().paused = false
 	else:
+		elevator.play()
 		self.show()
 		get_tree().paused= true 
 	paused = !paused

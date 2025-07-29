@@ -13,6 +13,8 @@ func _ready() -> void:
 func _on_quit_pressed() -> void:
 	buttion_type = "quit"
 	get_tree().paused = false
+	Gamemanager.gameOver = false
+	Gamemanager.score = 0
 	get_tree().change_scene_to_file("res://MENUS/MainMenu.tscn")
 	
 
@@ -24,10 +26,7 @@ func _on_restart_pressed() -> void:
 
 
 func _on_fade_timer_timeout() -> void:
-	if buttion_type == "quit":
-		get_tree().paused = false
-		get_tree().change_scene_to_file("res://MENUS/MainMenu.tscn")
-	elif buttion_type == "restart":
+	if buttion_type == "restart":
 		get_tree().paused = false
 		Gamemanager.gameOver = false
 		Gamemanager.score = 0

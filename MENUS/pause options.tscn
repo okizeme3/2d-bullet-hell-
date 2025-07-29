@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dyfbl6sp7vs6g"]
+[gd_scene load_steps=5 format=3 uid="uid://dyfbl6sp7vs6g"]
 
 [ext_resource type="Script" path="res://MENUS/PO.gd" id="1_vjcly"]
 [ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="2_ss415"]
-[ext_resource type="AudioStream" uid="uid://dcwhqf8kw3mc1" path="res://assets/sfx/UI_back.mp3" id="3_dieyh"]
-[ext_resource type="AudioStream" uid="uid://d0w0ntgpxnbkk" path="res://assets/sfx/ui_yes.mp3" id="4_6ik5b"]
 [ext_resource type="Texture2D" uid="uid://17em5so353js" path="res://assets/art/Main Menu/IMG_0516.PNG" id="5_jcbm3"]
 [ext_resource type="Texture2D" uid="uid://43acfhk3eyf5" path="res://assets/art/Main Menu/IMG_0517.PNG" id="6_6w4yw"]
 
@@ -37,7 +35,7 @@ text = "Master Volume:                                       Mute:"
 [node name="Master volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = -20.0
-max_value = 20.0
+max_value = 0.0
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/Master volume"]
 layout_mode = 0
@@ -55,7 +53,7 @@ text = "SFX Volume:                                              Mute:"
 [node name="SFX volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 min_value = -20.0
-max_value = 20.0
+max_value = 0.0
 
 [node name="sfx" type="CheckBox" parent="MarginContainer/VBoxContainer/SFX volume"]
 layout_mode = 0
@@ -76,12 +74,6 @@ text = "options"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
-
-[node name="UI_back" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_dieyh")
-
-[node name="UI_yes" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("4_6ik5b")
 
 [node name="Back" type="TextureButton" parent="."]
 layout_mode = 0

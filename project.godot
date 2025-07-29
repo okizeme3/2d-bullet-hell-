@@ -22,6 +22,8 @@ buses/default_bus_layout="res://assets/Music/default_bus_layout.tres"
 [autoload]
 
 Gamemanager="*res://scripts/gamemanager.gd"
+ConfigHandler="*res://scripts/config_handler.gd"
+Temple="*res://scences/temple.tscn"
 
 [display]
 

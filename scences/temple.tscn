@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cx8gkccnsvynx"]
+
+[ext_resource type="AudioStream" uid="uid://mmwvsk6jkvkn" path="res://assets/Music/Temple.wav" id="1_ex8nx"]
+[ext_resource type="Script" path="res://scences/temple.gd" id="2_ykv18"]
+
+[node name="Temple" type="AudioStreamPlayer"]
+stream = ExtResource("1_ex8nx")
+autoplay = true
+script = ExtResource("2_ykv18")
+
+[connection signal="finished" from="." to="." method="_on_finished"]

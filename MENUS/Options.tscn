@@ -1,7 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://bus1imgmdkbbi"]
+[gd_scene load_steps=6 format=3 uid="uid://bus1imgmdkbbi"]
 
 [ext_resource type="Script" path="res://MENUS/options.gd" id="1_v2f8k"]
-[ext_resource type="AudioStream" uid="uid://vxsqh7cnwqg2" path="res://assets/Music/Temple.mp3" id="3_i5p66"]
 [ext_resource type="PackedScene" uid="uid://c4w2mhtvquqng" path="res://scences/space_background.tscn" id="4_gqdqv"]
 [ext_resource type="Texture2D" uid="uid://17em5so353js" path="res://assets/art/Main Menu/IMG_0516.PNG" id="4_n8dgi"]
 [ext_resource type="Texture2D" uid="uid://43acfhk3eyf5" path="res://assets/art/Main Menu/IMG_0517.PNG" id="5_k4bsw"]
@@ -38,7 +37,7 @@ text = "Master Volume:                                       Mute:"
 process_mode = 3
 layout_mode = 2
 min_value = -20.0
-max_value = 20.0
+max_value = 0.0
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/Master volume"]
 process_mode = 3
@@ -58,7 +57,7 @@ text = "SFX Volume:                                               Mute:"
 process_mode = 3
 layout_mode = 2
 min_value = -20.0
-max_value = 20.0
+max_value = 0.0
 
 [node name="sfx" type="CheckBox" parent="MarginContainer/VBoxContainer/SFX volume"]
 process_mode = 3
@@ -88,16 +87,12 @@ text = "options"
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_i5p66")
-autoplay = true
-
 [node name="Back" type="TextureButton" parent="."]
 layout_mode = 0
-offset_left = -32.0
-offset_top = -224.0
-offset_right = 48.0
-offset_bottom = -200.0
+offset_left = -96.0
+offset_top = -112.0
+offset_right = -16.0
+offset_bottom = -88.0
 texture_normal = ExtResource("4_n8dgi")
 texture_pressed = ExtResource("4_n8dgi")
 texture_hover = ExtResource("5_k4bsw")
@@ -105,8 +100,10 @@ texture_focused = ExtResource("5_k4bsw")
 
 [node name="space background" parent="." instance=ExtResource("4_gqdqv")]
 
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Master volume" to="." method="_on_master_volume_drag_ended"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Master volume" to="." method="_on_master_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Master volume/CheckBox" to="." method="_on_check_box_toggled"]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/SFX volume" to="." method="_on_sfx_volume_drag_ended"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SFX volume" to="." method="_on_sfx_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/SFX volume/sfx" to="." method="_on_sfx_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RESET" to="." method="_on_reset_pressed"]
