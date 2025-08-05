@@ -29,6 +29,7 @@ Temple="*res://scences/temple.tscn"
 
 window/size/viewport_width=648
 window/size/viewport_height=950
+window/size/resizable=false
 
 [global_group]
 

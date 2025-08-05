@@ -6,6 +6,7 @@ extends Area2D
 @onready var shoot_interval: Timer = $"shoot interval"
 @export var Explosion : PackedScene
 @onready var move_interval: Timer = $"move interval"
+@onready var splat_soundfsad: AnimationPlayer = $"splat soundfsad"
 
 var speed : float = 75.0
 var intro = true
@@ -48,7 +49,8 @@ func _on_body_entered(body: Node2D) -> void:
 		body.expire()
 
 func death():
-	queue_free()
+	splat_soundfsad.play("death") 
+	#queue_free()
 
 func  shoot():
 	var instance = drill.instantiate()
@@ -96,3 +98,7 @@ func enter(delta: float):
 			move_left(delta)
 		if direction == 1:
 			move_right(delta)
+
+
+func _on_audio_stream_player_2d_finished() -> void:
+	queue_free()

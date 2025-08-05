@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc4318a43q8i2"]
+[gd_scene load_steps=17 format=3 uid="uid://bc4318a43q8i2"]
 
 [ext_resource type="Script" path="res://scripts/robot_enemy.gd" id="1_l6b6o"]
 [ext_resource type="PackedScene" uid="uid://dr1dhnitkd3w0" path="res://scences/robot_bits.tscn" id="2_0o1wn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://0jbkvp8vgdjf" path="res://assets/art/electric explosion/IMG_0475.PNG" id="9_nl0lu"]
 [ext_resource type="Texture2D" uid="uid://be1ayburqbh" path="res://assets/art/electric explosion/IMG_0476.PNG" id="10_bmhtq"]
 [ext_resource type="Texture2D" uid="uid://c5tqxnwae81j5" path="res://assets/art/explosion/IMG_0410.PNG" id="11_4oj6o"]
+[ext_resource type="AudioStream" uid="uid://bljc36nx1juoy" path="res://assets/sfx/electricity.wav" id="13_xvryc"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8whmi"]
 atlas = ExtResource("2_lfprf")
@@ -80,6 +81,9 @@ shape = SubResource("CircleShape2D_a4u3f")
 autostart = true
 
 [node name="death timer" type="Timer" parent="."]
+
+[node name="elec" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_xvryc")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="direction change" to="." method="_on_direction_change_timeout"]

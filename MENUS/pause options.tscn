@@ -34,7 +34,7 @@ text = "Master Volume:                                       Mute:"
 
 [node name="Master volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-min_value = -20.0
+min_value = -30.0
 max_value = 0.0
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/Master volume"]
@@ -52,10 +52,28 @@ text = "SFX Volume:                                              Mute:"
 
 [node name="SFX volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-min_value = -20.0
+min_value = -30.0
 max_value = 0.0
 
 [node name="sfx" type="CheckBox" parent="MarginContainer/VBoxContainer/SFX volume"]
+layout_mode = 0
+offset_left = 166.066
+offset_top = -20.6316
+offset_right = 190.066
+offset_bottom = 3.36842
+
+[node name="Music volume" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_ss415")
+theme_override_font_sizes/font_size = 5
+text = "Music Volume:                                           Mute:"
+
+[node name="mus" type="HSlider" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="musm" type="CheckBox" parent="MarginContainer/VBoxContainer/mus"]
 layout_mode = 0
 offset_left = 166.066
 offset_top = -20.6316
@@ -90,4 +108,6 @@ texture_focused = ExtResource("6_6w4yw")
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Master volume/CheckBox" to="." method="_on_check_box_toggled"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SFX volume" to="." method="_on_sfx_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/SFX volume/sfx" to="." method="_on_sfx_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/mus" to="." method="_on_mus_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/mus/musm" to="." method="_on_musm_toggled"]
 [connection signal="pressed" from="Back" to="." method="_on_button_pressed"]

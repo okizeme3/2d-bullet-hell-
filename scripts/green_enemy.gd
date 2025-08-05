@@ -3,6 +3,7 @@ extends Area2D
 @onready var player_ship = get_tree().get_first_node_in_group("player")
 @onready var score: Label = $"../labels and textures/score"
 @export var Explosion : PackedScene
+@onready var splat: AnimationPlayer = $splat
 
 var  speed : float = 75
 
@@ -25,4 +26,9 @@ func _on_body_entered(body: Node2D) -> void:
 		body.expire()
 
 func death():
+	splat.play("death")
+	#queue_free()
+
+
+func _on_audio_stream_player_2d_finished() -> void:
 	queue_free()

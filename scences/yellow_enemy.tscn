@@ -1,11 +1,96 @@
-[gd_scene load_steps=5 format=3 uid="uid://bcmb2k0ja51io"]
+[gd_scene load_steps=9 format=3 uid="uid://bcmb2k0ja51io"]
 
 [ext_resource type="Script" path="res://scripts/yellow_enemy.gd" id="1_2hjp6"]
 [ext_resource type="PackedScene" uid="uid://cjopfnttow6bg" path="res://scences/explosion_particles.tscn" id="2_17kwb"]
 [ext_resource type="Texture2D" uid="uid://bltv1rubna3be" path="res://assets/art/IMG_0392.PNG" id="2_pjh3c"]
+[ext_resource type="AudioStream" uid="uid://2ib5jtw8quk6" path="res://assets/sfx/splat.wav" id="4_qgdqa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4u3f"]
 radius = 6.0
+
+[sub_resource type="Animation" id="Animation_5f3m5"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_q3ouh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0333334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a7pwh"]
+_data = {
+"RESET": SubResource("Animation_q3ouh"),
+"death": SubResource("Animation_5f3m5")
+}
 
 [node name="yellow_enemy" type="Area2D"]
 collision_mask = 3
@@ -37,8 +122,17 @@ wait_time = 0.65
 one_shot = true
 autostart = true
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_qgdqa")
+
+[node name="splat soundfsad" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_a7pwh")
+}
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="shoot interval" to="." method="_on_shoot_interval_timeout"]
 [connection signal="timeout" from="move interval" to="." method="_on_move_interval_timeout"]
 [connection signal="timeout" from="attack timer" to="." method="_on_attack_timer_timeout"]
 [connection signal="timeout" from="entrance 1" to="." method="_on_entrance_1_timeout"]
+[connection signal="finished" from="AudioStreamPlayer2D" to="." method="_on_audio_stream_player_2d_finished"]

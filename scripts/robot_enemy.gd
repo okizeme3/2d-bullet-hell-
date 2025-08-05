@@ -7,6 +7,7 @@ extends Area2D
 @onready var DT: Timer = $"death timer"
 @onready var hitbox: CollisionShape2D = $CollisionShape2D
 @export var Explosion : PackedScene
+@onready var elec: AudioStreamPlayer = $elec
 
 var alive = true
 var direction = 1
@@ -38,6 +39,7 @@ func death():
 		explosion_instance.position = position
 		get_parent().add_child(explosion_instance)
 		explosion_instance.emitting = true
+		elec.play()
 	alive = false
 	hitbox.disabled = true
 	sprite_2d.play("death")

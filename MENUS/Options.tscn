@@ -36,7 +36,7 @@ text = "Master Volume:                                       Mute:"
 [node name="Master volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-min_value = -20.0
+min_value = -30.0
 max_value = 0.0
 
 [node name="CheckBox" type="CheckBox" parent="MarginContainer/VBoxContainer/Master volume"]
@@ -56,10 +56,30 @@ text = "SFX Volume:                                               Mute:"
 [node name="SFX volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
 process_mode = 3
 layout_mode = 2
-min_value = -20.0
+min_value = -30.0
 max_value = 0.0
 
 [node name="sfx" type="CheckBox" parent="MarginContainer/VBoxContainer/SFX volume"]
+process_mode = 3
+layout_mode = 0
+offset_left = 166.066
+offset_top = -20.6316
+offset_right = 190.066
+offset_bottom = 3.36842
+
+[node name="Music" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ks1t0")
+theme_override_font_sizes/font_size = 5
+text = "Music Volume:                                           Mute:"
+
+[node name="Music volume" type="HSlider" parent="MarginContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+min_value = -30.0
+max_value = 0.0
+
+[node name="mus" type="CheckBox" parent="MarginContainer/VBoxContainer/Music volume"]
 process_mode = 3
 layout_mode = 0
 offset_left = 166.066
@@ -106,5 +126,8 @@ texture_focused = ExtResource("5_k4bsw")
 [connection signal="drag_ended" from="MarginContainer/VBoxContainer/SFX volume" to="." method="_on_sfx_volume_drag_ended"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SFX volume" to="." method="_on_sfx_volume_value_changed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/SFX volume/sfx" to="." method="_on_sfx_toggled"]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer/Music volume" to="." method="_on_music_volume_drag_ended"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Music volume" to="." method="_on_music_volume_value_changed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Music volume/mus" to="." method="_on_mus_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/RESET" to="." method="_on_reset_pressed"]
 [connection signal="pressed" from="Back" to="." method="_on_button_pressed"]

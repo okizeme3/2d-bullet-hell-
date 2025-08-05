@@ -2,6 +2,7 @@ extends Control
 
 var Master_Muted : bool = false
 var SFX_Muted: bool = false
+var Music_Muted : bool = false
 
 func _ready() -> void:
 	var audio_settings = ConfigHandler.load_audio_setting()
@@ -31,6 +32,9 @@ func _on_reset_pressed() -> void:
 func _on_sfx_volume_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(1, value)
 
+func _on_music_volume_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(2, value)
+
 
 func _on_sfx_toggled(toggled_on: bool) -> void:
 	if !SFX_Muted:
@@ -49,3 +53,17 @@ func _on_master_volume_drag_ended(value_changed: bool) -> void:
 func _on_sfx_volume_drag_ended(value_changed: bool) -> void:
 	if value_changed:
 		ConfigHandler.save_audio_setting("sfx_volume", value_changed)
+
+
+func _on_music_volume_drag_ended(value_changed: bool) -> void:
+	if value_changed:
+		ConfigHandler.save_audio_setting("sfx_volume", value_changed)
+
+
+func _on_mus_toggled(toggled_on: bool) -> void:
+	if !Music_Muted:
+		AudioServer.set_bus_mute(0, true)
+		Music_Muted= true
+	elif Music_Muted:
+		AudioServer.set_bus_mute(0, false)
+		Music_Muted = false

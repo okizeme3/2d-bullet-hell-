@@ -3,6 +3,7 @@ extends Control
 
 var Muted : bool = false
 var SFX_Muted= false
+var MusicM = false
 @onready var PM = get_tree().get_first_node_in_group("PauseMenu")
 
 func _on_master_volume_value_changed(value: float) -> void:
@@ -36,3 +37,16 @@ func _on_sfx_toggled(toggled_on: bool) -> void:
 	elif SFX_Muted:
 		AudioServer.set_bus_mute(1, false)
 		SFX_Muted = false
+
+
+func _on_musm_toggled(toggled_on: bool) -> void:
+	if !MusicM:
+		AudioServer.set_bus_mute(2, true)
+		MusicM= true
+	elif MusicM:
+		AudioServer.set_bus_mute(2, false)
+		MusicM= false
+
+
+func _on_mus_value_changed(value: float) -> void:
+	AudioServer.set_bus_volume_db(2, value)

@@ -19,6 +19,7 @@ extends CharacterBody2D
 @onready var dash_invi: Timer = $"dash invi"
 @export var ghost_node : PackedScene
 @onready var ghost_timer: Timer = $"ghost timer"
+@onready var laser_sounds: AudioStreamPlayer = $laser_sounds
 
 
 @export var Explosion : PackedScene
@@ -38,8 +39,10 @@ func get_input():
 		# handels shooting 
 		if Input.is_action_pressed("shoot")and can_shoot:
 			shoot()
+			laser_sounds.play()
 			can_shoot= false
 			shoot_col.start()
+			
 		#handles input and velocity
 		if Input.is_action_pressed("finner control"):
 			speed = 75

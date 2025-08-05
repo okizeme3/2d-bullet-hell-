@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7a6jp7gs88m1"]
+
+[ext_resource type="AudioStream" uid="uid://2ib5jtw8quk6" path="res://assets/sfx/splat.wav" id="1_sxtf3"]
+
+[sub_resource type="Animation" id="Animation_motah"]
+resource_name = "sound"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("splat_sound/AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_ssvgd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("splat_sound/AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ptdgr"]
+_data = {
+"RESET": SubResource("Animation_ssvgd"),
+"sound": SubResource("Animation_motah")
+}
+
+[node name="splat_sound" type="AnimationPlayer"]
+libraries = {
+"": SubResource("AnimationLibrary_ptdgr")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_sxtf3")

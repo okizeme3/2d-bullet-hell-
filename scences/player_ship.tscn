@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://ca65thmub5xao"]
+[gd_scene load_steps=28 format=3 uid="uid://ca65thmub5xao"]
 
 [ext_resource type="Script" path="res://scripts/player_ship.gd" id="1_ynhdv"]
 [ext_resource type="Shader" uid="uid://c5n6equdr30ja" path="res://shader/respawn_flash.tres" id="2_adrxq"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://dtdfyisaqy23h" path="res://assets/art/fire pt 2.PNG" id="12_ypf1j"]
 [ext_resource type="Texture2D" uid="uid://8hn3qqe8ubq6" path="res://assets/art/fire.PNG" id="13_wqsls"]
 [ext_resource type="AudioStream" uid="uid://b4lb2u646ehp4" path="res://assets/sfx/explosion.mp3" id="16_84xct"]
+[ext_resource type="AudioStream" uid="uid://b1lm8fhiw1777" path="res://assets/sfx/try 2 laser.mp3" id="17_riftn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mr7o4"]
 shader = ExtResource("2_adrxq")
@@ -217,6 +218,10 @@ wait_time = 0.05
 [node name="SFX_explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_84xct")
 volume_db = -16.0
+bus = &"SFX"
+
+[node name="laser_sounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("17_riftn")
 bus = &"SFX"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

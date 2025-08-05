@@ -6,6 +6,7 @@
 [node name="Temple" type="AudioStreamPlayer"]
 stream = ExtResource("1_ex8nx")
 autoplay = true
+bus = &"Music"
 script = ExtResource("2_ykv18")
 
 [connection signal="finished" from="." to="." method="_on_finished"]
