@@ -32,19 +32,24 @@ func _on_body_entered(body: Node2D) -> void:
 			Gamemanager.score += 20
 			body.expire()
 		death()
+	if body.is_in_group("deathe"):
+		despawn()
 
 func death():
 	if alive:
 		var explosion_instance = Explosion.instantiate()
 		explosion_instance.position = position
 		get_parent().add_child(explosion_instance)
-		explosion_instance.emitting = true
+		#explosion_instance.emitting = true
 		elec.play()
 	alive = false
 	hitbox.disabled = true
 	sprite_2d.play("death")
 	
 	await sprite_2d.animation_finished
+	queue_free()
+
+func despawn():
 	queue_free()
 
 func move_left(delta: float):

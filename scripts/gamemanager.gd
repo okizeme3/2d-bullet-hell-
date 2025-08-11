@@ -34,6 +34,8 @@ func check_score():
 func _on_bullet_killzone_body_entered(body: Node2D) -> void:
 	if  body.is_in_group("lazer") or body.is_in_group("enemy bullets"):
 		body.expire()
+	if body.is_in_group("enemy"):
+		body.queue_free()
 func bonus():
 	player.add_life()
 	

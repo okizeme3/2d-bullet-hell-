@@ -64,7 +64,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_a4u3f"]
 radius = 6.0
 
-[node name="robot enemy" type="Area2D"]
+[node name="robot enemy" type="Area2D" groups=["enemy"]]
 collision_mask = 3
 script = ExtResource("1_l6b6o")
 Explosion = ExtResource("2_0o1wn")
@@ -84,6 +84,7 @@ autostart = true
 
 [node name="elec" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("13_xvryc")
+volume_db = -9.197
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="direction change" to="." method="_on_direction_change_timeout"]

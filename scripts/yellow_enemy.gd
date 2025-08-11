@@ -47,10 +47,15 @@ func _on_body_entered(body: Node2D) -> void:
 		death()
 		Gamemanager.score += 30
 		body.expire()
+	if body.is_in_group("deathe"):
+		despawn()
 
 func death():
 	splat_soundfsad.play("death") 
 	#queue_free()
+	
+func  despawn():
+	queue_free()
 
 func  shoot():
 	var instance = drill.instantiate()

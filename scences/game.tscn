@@ -1,8 +1,7 @@
-[gd_scene load_steps=21 format=3 uid="uid://dev141ytg4iyn"]
+[gd_scene load_steps=20 format=3 uid="uid://dev141ytg4iyn"]
 
 [ext_resource type="PackedScene" uid="uid://ca65thmub5xao" path="res://scences/player_ship.tscn" id="1_5mmqh"]
 [ext_resource type="Script" path="res://scripts/gamemanager.gd" id="1_do3vv"]
-[ext_resource type="PackedScene" uid="uid://4tdwvcwep81b" path="res://scences/green_enemy.tscn" id="3_5px7y"]
 [ext_resource type="Texture2D" uid="uid://bjbxch8r3rspp" path="res://assets/art/IMG_0388.PNG" id="4_88p00"]
 [ext_resource type="Script" path="res://scripts/bullet_killzone.gd" id="4_eue21"]
 [ext_resource type="FontFile" uid="uid://cvkofnt8n3rho" path="res://assets/fonts/Pixeled.ttf" id="4_uum2l"]
@@ -12,7 +11,6 @@
 [ext_resource type="Texture2D" uid="uid://n55maexicgap" path="res://assets/art/IMG_0417.PNG" id="8_n1udv"]
 [ext_resource type="Texture2D" uid="uid://bprwwram5cbst" path="res://assets/art/IMG_0418.PNG" id="9_0k55y"]
 [ext_resource type="PackedScene" uid="uid://dbwy5iblamyar" path="res://scences/advanced_enemy_spawner.tscn" id="9_n4mol"]
-[ext_resource type="PackedScene" uid="uid://bc4318a43q8i2" path="res://scences/robot_enemy.tscn" id="11_0muqq"]
 [ext_resource type="PackedScene" uid="uid://bcmb2k0ja51io" path="res://scences/yellow_enemy.tscn" id="12_p1ujp"]
 [ext_resource type="PackedScene" uid="uid://cxaufcp2wpll3" path="res://MENUS/pausemenu.tscn" id="16_5rib2"]
 [ext_resource type="PackedScene" uid="uid://c4w2mhtvquqng" path="res://scences/space_background.tscn" id="16_e7nxy"]
@@ -22,6 +20,9 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dtmo2"]
 size = Vector2(162, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_evagk"]
+size = Vector2(192, 20)
 
 [node name="game" type="Node2D"]
 script = ExtResource("1_do3vv")
@@ -64,8 +65,7 @@ position = Vector2(0, 5)
 shape = SubResource("RectangleShape2D_dtmo2")
 
 [node name="bullet killzone2" parent="Camera2D" instance=ExtResource("8_gfq3v")]
-visible = false
-position = Vector2(0, 116)
+position = Vector2(0, 128)
 script = ExtResource("4_eue21")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Camera2D/bullet killzone2"]
@@ -74,17 +74,8 @@ shape = SubResource("RectangleShape2D_dtmo2")
 
 [node name="enemy_spawners" type="Node" parent="."]
 
-[node name="green enemy" parent="enemy_spawners" instance=ExtResource("3_5px7y")]
-position = Vector2(19, -105)
-
 [node name="yellow_enemy" parent="enemy_spawners" instance=ExtResource("12_p1ujp")]
 position = Vector2(123, -76)
-
-[node name="robot enemy" parent="enemy_spawners" instance=ExtResource("11_0muqq")]
-position = Vector2(-37, -18)
-
-[node name="robot enemy2" parent="enemy_spawners" instance=ExtResource("11_0muqq")]
-position = Vector2(37, -35)
 
 [node name="yellow_enemy2" parent="enemy_spawners" instance=ExtResource("12_p1ujp")]
 position = Vector2(-123, -76)
@@ -92,8 +83,17 @@ position = Vector2(-123, -76)
 [node name="simple spawner" parent="enemy_spawners" instance=ExtResource("8_bbmyy")]
 position = Vector2(-29, -153)
 
+[node name="simple spawner3" parent="enemy_spawners" instance=ExtResource("8_bbmyy")]
+position = Vector2(-8, -144)
+
 [node name="simple spawner2" parent="enemy_spawners" instance=ExtResource("8_bbmyy")]
-position = Vector2(29, -153)
+position = Vector2(24, -160)
+
+[node name="simple spawner4" parent="enemy_spawners" instance=ExtResource("8_bbmyy")]
+position = Vector2(62, -128)
+
+[node name="simple spawner5" parent="enemy_spawners" instance=ExtResource("8_bbmyy")]
+position = Vector2(-58, -136)
 
 [node name="advanced enemy spawner" parent="enemy_spawners" instance=ExtResource("9_n4mol")]
 position = Vector2(123, -97)
@@ -150,6 +150,12 @@ z_index = 10
 
 [node name="fade_timer" type="Timer" parent="."]
 script = ExtResource("19_v2fgq")
+
+[node name="death barier" type="CharacterBody2D" parent="." groups=["deathe"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="death barier" groups=["deathe"]]
+position = Vector2(0, 152)
+shape = SubResource("RectangleShape2D_evagk")
 
 [connection signal="body_entered" from="Camera2D/bullet killzone" to="." method="_on_bullet_killzone_body_entered"]
 [connection signal="body_entered" from="Camera2D/bullet killzone2" to="." method="_on_bullet_killzone_body_entered"]

@@ -24,11 +24,14 @@ func _on_body_entered(body: Node2D) -> void:
 		body.hit_enemy = true
 		Gamemanager.score += 10
 		body.expire()
+	if body.is_in_group("deathe"):
+		despawn()
 
 func death():
 	splat.play("death")
 	#queue_free()
 
-
+func despawn():
+	queue_free()
 func _on_audio_stream_player_2d_finished() -> void:
 	queue_free()
