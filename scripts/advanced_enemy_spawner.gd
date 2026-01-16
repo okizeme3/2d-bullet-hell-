@@ -17,5 +17,5 @@ func checkScore():
 		BSI_num = 14
 	elif 500 <=Gamemanager.score and Gamemanager.score <= 1000:
 		BSI_num = 10
-	elif 1001 <=Gamemanager.score and Gamemanager.score <= 2000:
+	elif 1001 <=Gamemanager.score:
 		BSI_num = 8

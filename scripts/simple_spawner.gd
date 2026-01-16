@@ -29,6 +29,6 @@ func checkScore():
 	elif 500 <=Gamemanager.score and Gamemanager.score <= 1000:
 		GSI_num = 6
 		RSI_num = 8
-	elif 1001 <=Gamemanager.score and Gamemanager.score <= 2000:
+	elif 1001 <=Gamemanager.score:
 		GSI_num = 4
 		RSI_num = 6
